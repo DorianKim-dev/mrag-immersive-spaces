@@ -2,94 +2,64 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css');
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* MRAG Premium Hybrid Theme */
+    --font-display: 'Pretendard Variable', 'Pretendard', -apple-system, sans-serif;
+    --font-body: 'Pretendard Variable', 'Pretendard', -apple-system, sans-serif;
+    --font-accent: 'Inter', sans-serif;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --background: 30 20% 97%;
+    --foreground: 220 25% 10%;
+
+    --card: 30 15% 95%;
+    --card-foreground: 220 25% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 220 25% 10%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 220 20% 12%;
+    --primary-foreground: 30 20% 97%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 30 10% 92%;
+    --secondary-foreground: 220 20% 12%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 30 10% 92%;
+    --muted-foreground: 220 10% 46%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 168 60% 42%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 30 15% 88%;
+    --input: 30 15% 88%;
+    --ring: 168 60% 42%;
+    --radius: 0.375rem;
 
-    --radius: 0.5rem;
+    /* MRAG custom tokens */
+    --mrag-navy: 220 30% 8%;
+    --mrag-navy-light: 220 25% 14%;
+    --mrag-warm-white: 30 20% 97%;
+    --mrag-warm-cream: 35 25% 93%;
+    --mrag-teal: 168 60% 42%;
+    --mrag-teal-light: 168 50% 65%;
+    --mrag-gold: 40 60% 55%;
+    --mrag-charcoal: 220 15% 20%;
+    --mrag-slate: 220 10% 46%;
+    --mrag-dark-surface: 220 25% 6%;
 
+    /* Sidebar */
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
@@ -99,7 +69,103 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-display);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+
+  .font-accent {
+    font-family: var(--font-accent);
+    letter-spacing: -0.01em;
+  }
+}
+
+@layer components {
+  .section-dark {
+    @apply bg-mrag-navy text-mrag-warm-white;
+  }
+
+  .section-light {
+    @apply bg-background text-foreground;
+  }
+
+  .section-cream {
+    @apply bg-mrag-warm-cream text-foreground;
+  }
+
+  .text-gradient-teal {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--mrag-teal)), hsl(var(--mrag-teal-light)));
+  }
+
+  .editorial-heading {
+    @apply text-4xl md:text-5xl lg:text-7xl font-bold leading-[1.05] tracking-tight;
+  }
+
+  .section-label {
+    @apply text-xs md:text-sm font-semibold uppercase tracking-[0.2em];
+    font-family: var(--font-accent);
+  }
+
+  .stat-number {
+    @apply text-4xl md:text-6xl lg:text-7xl font-black leading-none;
+    font-family: var(--font-accent);
+    letter-spacing: -0.03em;
+  }
+
+  .container-wide {
+    @apply mx-auto px-5 md:px-8 lg:px-16 max-w-[1440px];
+  }
+
+  .container-narrow {
+    @apply mx-auto px-5 md:px-8 lg:px-16 max-w-[1100px];
+  }
+
+  .media-block {
+    @apply overflow-hidden rounded-sm;
+  }
+
+  .media-block img {
+    @apply w-full h-full object-cover;
+  }
+
+  .hover-lift {
+    @apply transition-transform duration-500 ease-out;
+  }
+  .hover-lift:hover {
+    transform: translateY(-4px);
+  }
+
+  .line-reveal {
+    @apply relative overflow-hidden;
+  }
+  .line-reveal::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-px bg-mrag-teal;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .line-reveal:hover::after {
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
