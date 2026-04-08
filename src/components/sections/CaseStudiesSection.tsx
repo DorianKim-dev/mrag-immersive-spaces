@@ -1,113 +1,66 @@
 import { Reveal } from '@/components/animations/Reveal';
 import { Link } from 'react-router-dom';
-import contentFnb from '@/assets/projects/content-fnb.jpg';
-import contentStore from '@/assets/projects/content-store.jpg';
 import globalOps from '@/assets/projects/global-ops.jpg';
-
-const featured = {
-  title: '필리핀 San Fernando 미디어카페',
-  client: '해외 F&B / 미디어 엔터테인먼트',
-  role: 'HISCO 전체 구축 · 콘텐츠 운영 · 장기 유지보수',
-  summary: '동남아 최초 MRAG 미디어카페. 지역 No.1 미디어 카페로 자리잡으며 F&B+엔터테인먼트 복합 공간 운영 모델을 검증.',
-  image: globalOps,
-};
-
-const supporting = [
-  {
-    title: '충남대학교 융합교육혁신센터',
-    client: '공공·교육',
-    role: '미디어 인프라 구축 · 콘텐츠 공급',
-    image: contentFnb,
-  },
-  {
-    title: 'GLAM Grand Media Art Cafe',
-    client: 'F&B · 미디어아트',
-    role: 'HISCO 전체 구축 · 브랜드 운영',
-    image: contentStore,
-  },
-];
+import immersiveBeauty from '@/assets/projects/immersive-beauty.jpg';
+import mediaSpa from '@/assets/projects/media-spa-concept.jpg';
 
 export const CaseStudiesSection = () => {
   return (
-    <section className="section-dark py-24 md:py-36">
+    <section className="section-dark py-28 md:py-40">
       <div className="container-wide">
-        <div className="flex items-end justify-between mb-12">
+        <div className="flex items-end justify-between mb-14">
           <div>
-            <Reveal>
-              <span className="section-label text-mrag-teal">Featured Work</span>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <h2 className="mt-4 text-3xl md:text-4xl lg:text-5xl font-bold text-mrag-warm-white leading-tight">
-                실제 구축 사례
-              </h2>
-            </Reveal>
+            <Reveal><span className="section-label text-mrag-teal">Featured Work</span></Reveal>
+            <Reveal delay={0.1}><h2 className="mt-5 heading-section text-mrag-warm-white">실제 구축 사례</h2></Reveal>
           </div>
           <Reveal delay={0.2}>
-            <Link
-              to="/work"
-              className="hidden md:inline-flex items-center gap-2 text-sm font-medium text-mrag-teal hover:text-mrag-teal-light transition-colors"
-            >
-              전체 사례 보기
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
+            <Link to="/work" className="hidden md:inline-flex text-sm font-accent font-medium text-mrag-teal hover:text-mrag-teal-light transition-colors">
+              전체 보기 →
             </Link>
           </Reveal>
         </div>
 
-        {/* Featured large */}
+        {/* Featured — oversized single */}
         <Reveal>
-          <div className="group relative overflow-hidden rounded-sm aspect-[21/9] mb-4">
-            <img
-              src={featured.image}
-              alt={featured.title}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              loading="lazy"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-mrag-navy/90 via-mrag-navy/50 to-transparent" />
-            <div className="absolute bottom-0 left-0 p-8 md:p-12 max-w-2xl">
-              <span className="font-accent text-xs font-semibold text-mrag-teal tracking-wider uppercase">{featured.client}</span>
-              <h3 className="mt-3 text-2xl md:text-3xl lg:text-4xl font-bold text-mrag-warm-white leading-tight">
-                {featured.title}
+          <div className="group relative overflow-hidden aspect-[2.4/1] mb-5">
+            <img src={globalOps} alt="필리핀 미디어카페" className="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-[1.03]" />
+            <div className="absolute inset-0 bg-gradient-to-r from-mrag-navy/85 via-mrag-navy/40 to-transparent" />
+            <div className="absolute bottom-0 left-0 p-8 md:p-14 max-w-xl">
+              <span className="font-accent text-[11px] font-bold text-mrag-teal tracking-[0.15em] uppercase">해외 F&B · HISCO 전체 구축</span>
+              <h3 className="mt-3 text-2xl md:text-4xl font-bold text-mrag-warm-white leading-tight tracking-tight">
+                필리핀 San Fernando
+                <br />미디어카페
               </h3>
-              <p className="mt-3 text-sm text-mrag-warm-white/60 leading-relaxed">{featured.summary}</p>
-              <p className="mt-4 text-xs text-mrag-warm-white/40 font-accent">{featured.role}</p>
+              <p className="mt-3 text-sm text-mrag-warm-white/45 leading-relaxed max-w-md">
+                동남아 최초 MRAG 미디어카페. 지역 No.1으로 자리잡으며 해외 F&B+엔터테인먼트 복합 운영 모델 검증.
+              </p>
             </div>
           </div>
         </Reveal>
 
-        {/* Supporting */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {supporting.map((item, i) => (
-            <Reveal key={item.title} delay={0.1 + i * 0.1}>
-              <div className="group relative overflow-hidden rounded-sm aspect-[16/9]">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-mrag-navy/80 to-transparent" />
-                <div className="absolute bottom-0 left-0 p-6">
-                  <span className="font-accent text-xs text-mrag-teal">{item.client}</span>
-                  <h3 className="mt-2 text-lg md:text-xl font-bold text-mrag-warm-white">{item.title}</h3>
-                  <p className="mt-1 text-xs text-mrag-warm-white/50">{item.role}</p>
-                </div>
+        {/* Two supporting — asymmetric */}
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-5">
+          <Reveal delay={0.1}>
+            <div className="md:col-span-3 group relative overflow-hidden aspect-[16/9]">
+              <img src={mediaSpa} alt="Media Spa Concept" className="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-[1.03]" />
+              <div className="absolute inset-0 bg-gradient-to-t from-mrag-navy/70 to-transparent" />
+              <div className="absolute bottom-6 left-6">
+                <span className="font-accent text-[11px] text-mrag-teal tracking-wider">복합 웰니스</span>
+                <h3 className="mt-1 text-xl font-bold text-mrag-warm-white">Media Spa Concept</h3>
               </div>
-            </Reveal>
-          ))}
+            </div>
+          </Reveal>
+          <Reveal delay={0.2}>
+            <div className="md:col-span-2 group relative overflow-hidden aspect-[16/9] md:aspect-auto md:h-full">
+              <img src={immersiveBeauty} alt="몰입형 미디어 전시" className="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-[1.03]" />
+              <div className="absolute inset-0 bg-gradient-to-t from-mrag-navy/70 to-transparent" />
+              <div className="absolute bottom-6 left-6">
+                <span className="font-accent text-[11px] text-mrag-teal tracking-wider">미디어아트</span>
+                <h3 className="mt-1 text-xl font-bold text-mrag-warm-white">몰입형 미디어 전시</h3>
+              </div>
+            </div>
+          </Reveal>
         </div>
-
-        <Reveal delay={0.3}>
-          <div className="mt-8 md:hidden text-center">
-            <Link
-              to="/work"
-              className="inline-flex items-center gap-2 text-sm font-medium text-mrag-teal"
-            >
-              전체 사례 보기 →
-            </Link>
-          </div>
-        </Reveal>
       </div>
     </section>
   );
