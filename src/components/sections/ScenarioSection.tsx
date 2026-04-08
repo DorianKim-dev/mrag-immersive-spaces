@@ -1,126 +1,100 @@
 import { Reveal } from '@/components/animations/Reveal';
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
-import scenarioYoga from '@/assets/projects/scenario-yoga.jpg';
-import scenarioCafe from '@/assets/projects/scenario-cafe.jpg';
-import scenarioDining from '@/assets/projects/scenario-dining.jpg';
-import scenarioLounge from '@/assets/projects/scenario-lounge.jpg';
+import scenarioYoga from '@/assets/projects/immersive-yoga.jpg';
+import scenarioCafe from '@/assets/projects/scenario-flamingo.jpg';
+import scenarioDining from '@/assets/projects/immersive-cherry.jpg';
+import scenarioLounge from '@/assets/projects/scenario-cityview.jpg';
 
 const timeSlots = [
-  { time: '06~10시', label: '요가 & 웰니스', en: 'YOGA', image: scenarioYoga, accent: 'bg-amber-400/20 text-amber-600' },
-  { time: '10~14시', label: '브런치 카페', en: 'CAFE', image: scenarioCafe, accent: 'bg-green-400/20 text-green-600' },
-  { time: '14~21시', label: '다이닝 레스토랑', en: 'DINING', image: scenarioDining, accent: 'bg-blue-400/20 text-blue-600' },
-  { time: '21~02시', label: '미디어 펍', en: 'LOUNGE', image: scenarioLounge, accent: 'bg-purple-400/20 text-purple-600' },
-];
-
-const seasons = [
-  { title: '크리스마스 이벤트', en: 'CHRISTMAS', desc: '연말 시즌 테마 공간 운영' },
-  { title: '할로윈 파티', en: 'HALLOWEEN', desc: '테마형 체험 콘텐츠 운영' },
-  { title: '프라이빗 파티', en: 'PRIVATE', desc: '고객 맞춤형 경험 제공' },
-  { title: '연말/새해', en: 'NEW YEAR', desc: '카운트다운 및 시즌 이벤트' },
+  { time: '06–10', label: '요가 & 웰니스', en: 'YOGA', image: scenarioYoga },
+  { time: '10–14', label: '브런치 카페', en: 'CAFE', image: scenarioCafe },
+  { time: '14–21', label: '다이닝 레스토랑', en: 'DINING', image: scenarioDining },
+  { time: '21–02', label: '미디어 펍', en: 'LOUNGE', image: scenarioLounge },
 ];
 
 export const ScenarioSection = () => {
-  const [activeSlot, setActiveSlot] = useState(0);
-  const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
+  const [active, setActive] = useState(0);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section ref={sectionRef} className="section-light py-24 md:py-36">
+    <section ref={ref} className="section-light py-28 md:py-40">
       <div className="container-wide">
         <Reveal>
           <span className="section-label text-mrag-teal">Scenario</span>
         </Reveal>
         <Reveal delay={0.1}>
-          <h2 className="mt-4 text-3xl md:text-4xl lg:text-5xl font-bold leading-tight max-w-3xl">
+          <h2 className="mt-5 heading-section max-w-2xl">
             하나의 공간,
-            <br />
-            <span className="text-gradient-teal">무한한 전환.</span>
+            <br /><span className="text-gradient-teal">무한한 전환.</span>
           </h2>
         </Reveal>
         <Reveal delay={0.15}>
-          <p className="mt-4 text-lg text-muted-foreground max-w-xl">
-            시간대별, 시즌별로 공간의 용도와 분위기가 완전히 전환됩니다.
+          <p className="mt-4 body-large max-w-lg">
+            시간대와 시즌에 따라 공간의 용도와 분위기가 완전히 전환됩니다.
           </p>
         </Reveal>
 
-        {/* Time-based transformation */}
+        {/* Full-width time transformation */}
         <div className="mt-16">
-          <Reveal delay={0.2}>
-            <h3 className="text-sm font-semibold text-foreground mb-6 uppercase tracking-wider font-accent">
-              시간대별 운영 시나리오
-            </h3>
-          </Reveal>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-            {/* Image preview */}
-            <div className="lg:col-span-7 relative aspect-[16/10] overflow-hidden rounded-sm">
-              {timeSlots.map((slot, i) => (
-                <motion.img
-                  key={slot.en}
-                  src={slot.image}
-                  alt={slot.label}
-                  className="absolute inset-0 w-full h-full object-cover"
-                  initial={false}
-                  animate={{ opacity: activeSlot === i ? 1 : 0 }}
-                  transition={{ duration: 0.6 }}
-                />
-              ))}
-              <div className="absolute inset-0 bg-gradient-to-t from-foreground/40 to-transparent" />
-              <div className="absolute bottom-6 left-6">
-                <motion.span
-                  key={activeSlot}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="font-accent text-4xl md:text-5xl font-black text-mrag-warm-white"
-                >
-                  {timeSlots[activeSlot].en}
-                </motion.span>
-              </div>
+          {/* Large image */}
+          <div className="relative aspect-[21/9] overflow-hidden">
+            {timeSlots.map((slot, i) => (
+              <motion.img
+                key={slot.en}
+                src={slot.image}
+                alt={slot.label}
+                className="absolute inset-0 w-full h-full object-cover"
+                initial={false}
+                animate={{ opacity: active === i ? 1 : 0 }}
+                transition={{ duration: 0.8 }}
+              />
+            ))}
+            <div className="absolute inset-0 bg-gradient-to-t from-mrag-navy/70 via-transparent to-mrag-navy/10" />
+            <div className="absolute bottom-8 left-8 md:bottom-12 md:left-12">
+              <motion.div key={active} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
+                <span className="font-accent text-5xl md:text-7xl font-black text-mrag-warm-white/90 tracking-tighter">
+                  {timeSlots[active].en}
+                </span>
+                <p className="mt-1 text-sm text-mrag-warm-white/50">{timeSlots[active].label}</p>
+              </motion.div>
             </div>
+          </div>
 
-            {/* Time slots selector */}
-            <div className="lg:col-span-5 flex flex-col gap-2">
-              {timeSlots.map((slot, i) => (
-                <motion.button
-                  key={slot.en}
-                  onClick={() => setActiveSlot(i)}
-                  className={`text-left p-5 rounded-sm border transition-all duration-300 ${
-                    activeSlot === i
-                      ? 'border-mrag-teal bg-mrag-teal/5'
-                      : 'border-border hover:border-mrag-teal/30 bg-transparent'
-                  }`}
-                  animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
-                  transition={{ delay: 0.3 + i * 0.1 }}
-                >
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <span className="font-accent text-xs font-semibold text-muted-foreground">{slot.time}</span>
-                      <h4 className="mt-1 text-lg font-bold text-foreground">{slot.label}</h4>
-                    </div>
-                    <span className={`px-3 py-1 rounded-sm text-xs font-semibold font-accent ${slot.accent}`}>
-                      {slot.en}
-                    </span>
-                  </div>
-                </motion.button>
-              ))}
-            </div>
+          {/* Timeline strip */}
+          <div className="grid grid-cols-4 mt-0">
+            {timeSlots.map((slot, i) => (
+              <button
+                key={slot.en}
+                onClick={() => setActive(i)}
+                className={`py-5 px-4 text-left border-t-2 transition-all duration-400 ${
+                  active === i
+                    ? 'border-mrag-teal bg-mrag-teal/[0.04]'
+                    : 'border-border hover:border-mrag-teal/30'
+                }`}
+              >
+                <span className="font-accent text-xs font-bold text-muted-foreground">{slot.time}시</span>
+                <p className={`mt-1 text-sm font-semibold transition-colors ${active === i ? 'text-foreground' : 'text-muted-foreground'}`}>
+                  {slot.label}
+                </p>
+              </button>
+            ))}
           </div>
         </div>
 
-        {/* Seasonal */}
+        {/* Seasonal — minimal, single row */}
         <Reveal delay={0.3}>
           <div className="mt-20">
-            <h3 className="text-sm font-semibold text-foreground mb-8 uppercase tracking-wider font-accent">
-              시즌별 운영 시나리오
-            </h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {seasons.map((season) => (
-                <div key={season.en} className="p-5 md:p-6 border border-border rounded-sm hover:border-mrag-teal/30 transition-colors">
-                  <span className="font-accent text-xs font-bold text-mrag-teal tracking-wider">{season.en}</span>
-                  <h4 className="mt-2 text-base font-bold text-foreground">{season.title}</h4>
-                  <p className="mt-2 text-xs text-muted-foreground leading-relaxed">{season.desc}</p>
-                </div>
+            <h3 className="section-label text-muted-foreground mb-6">시즌별 전환</h3>
+            <div className="flex flex-wrap gap-3">
+              {['크리스마스 이벤트', '할로윈 파티', '프라이빗 파티', '연말/새해', '팝업 전시', '교육 프로그램', '몰입 퍼포먼스', '기업 행사'].map((item) => (
+                <span
+                  key={item}
+                  className="px-4 py-2 text-sm text-foreground/70 border border-border hover:border-mrag-teal/30 transition-colors cursor-default"
+                >
+                  {item}
+                </span>
               ))}
             </div>
           </div>
