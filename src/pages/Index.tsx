@@ -1,16 +1,35 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { SiteHeader } from '@/components/layout/SiteHeader';
+import { SiteFooter } from '@/components/layout/SiteFooter';
+import { HeroSection } from '@/components/sections/HeroSection';
+import { ProblemSolutionSection } from '@/components/sections/ProblemSolutionSection';
+import { HiscoSection } from '@/components/sections/HiscoSection';
+import { ValueShiftSection } from '@/components/sections/ValueShiftSection';
+import { TrustSection } from '@/components/sections/TrustSection';
+import { ModulesSection } from '@/components/sections/ModulesSection';
+import { ScenarioSection } from '@/components/sections/ScenarioSection';
+import { CaseStudiesSection } from '@/components/sections/CaseStudiesSection';
+import { PressSection } from '@/components/sections/PressSection';
+import { ContactCtaSection } from '@/components/sections/ContactCtaSection';
 
-// IMPORTANT: Fully REPLACE this with your own code
-const PlaceholderIndex = () => {
-  // PLACEHOLDER: Replace this entire return statement with the user's app.
-  // The inline background color is intentionally not part of the design system.
+const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center" style={{ backgroundColor: '#fcfbf8' }}>
-      <img data-lovable-blank-page-placeholder="REMOVE_THIS" src="/placeholder.svg" alt="Your app will live here!" />
-    </div>
+    <>
+      <SiteHeader />
+      <main>
+        <HeroSection />
+        <ProblemSolutionSection />
+        <HiscoSection />
+        <ValueShiftSection />
+        <TrustSection />
+        <ModulesSection />
+        <ScenarioSection />
+        <CaseStudiesSection />
+        <PressSection />
+        <ContactCtaSection />
+      </main>
+      <SiteFooter />
+    </>
   );
 };
-
-const Index = PlaceholderIndex;
 
 export default Index;
