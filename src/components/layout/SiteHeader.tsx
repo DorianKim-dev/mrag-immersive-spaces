@@ -19,7 +19,10 @@ export const SiteHeader = () => {
     return () => window.removeEventListener('scroll', handler);
   }, []);
 
-  useEffect(() => setMenuOpen(false), [location]);
+  useEffect(() => {
+    setMenuOpen(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [location.pathname]);
 
   return (
     <>
@@ -43,7 +46,11 @@ export const SiteHeader = () => {
               <Link
                 key={item.href}
                 to={item.href}
-                className="line-reveal text-sm font-medium text-mrag-warm-white/80 hover:text-mrag-warm-white transition-colors pb-1"
+                className={`line-reveal text-sm font-medium transition-colors pb-1 ${
+                  location.pathname === item.href
+                    ? 'text-mrag-warm-white'
+                    : 'text-mrag-warm-white/80 hover:text-mrag-warm-white'
+                }`}
               >
                 {item.label}
               </Link>
@@ -96,6 +103,30 @@ export const SiteHeader = () => {
               >
                 프로젝트 문의
               </Link>
+            </motion.div>
+            {/* Social links in mobile menu */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5 }}
+              className="mt-8 flex gap-6"
+            >
+              <a
+                href="https://www.youtube.com/@maboroshi_mrag"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-accent text-mrag-warm-white/40 hover:text-mrag-teal transition-colors"
+              >
+                YouTube
+              </a>
+              <a
+                href="https://www.instagram.com/mrag_official/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-accent text-mrag-warm-white/40 hover:text-mrag-teal transition-colors"
+              >
+                Instagram
+              </a>
             </motion.div>
           </motion.div>
         )}
