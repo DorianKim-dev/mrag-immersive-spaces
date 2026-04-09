@@ -147,6 +147,13 @@
     line-height: 0.9;
   }
 
+  /* Page title — editorial weight */
+  .editorial-heading {
+    @apply text-4xl md:text-6xl lg:text-7xl font-extrabold;
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+  }
+
   .body-large {
     @apply text-base md:text-lg leading-[1.7];
     color: hsl(var(--muted-foreground));
