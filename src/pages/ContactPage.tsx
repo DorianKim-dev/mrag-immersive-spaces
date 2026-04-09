@@ -33,7 +33,6 @@ const ContactPage = () => {
 
                 <Reveal delay={0.1}>
                   <div className="mt-12 space-y-8">
-                    {/* Person 1 */}
                     <div className="flex items-start gap-5">
                       <div className="w-12 h-12 rounded-full bg-mrag-navy flex items-center justify-center shrink-0">
                         <span className="font-accent text-sm font-bold text-mrag-teal">JH</span>
@@ -45,7 +44,6 @@ const ContactPage = () => {
                         </a>
                       </div>
                     </div>
-                    {/* Person 2 */}
                     <div className="flex items-start gap-5">
                       <div className="w-12 h-12 rounded-full bg-mrag-navy flex items-center justify-center shrink-0">
                         <span className="font-accent text-sm font-bold text-mrag-teal">JW</span>
@@ -78,6 +76,24 @@ const ContactPage = () => {
                       <span className="text-xs text-muted-foreground font-accent uppercase tracking-wider">Tel</span>
                       <a href="tel:02-308-0007" className="block text-foreground font-accent hover:text-mrag-teal transition-colors">
                         02-308-0007
+                      </a>
+                    </div>
+                    <div className="pt-4 flex gap-5">
+                      <a
+                        href="https://www.youtube.com/@maboroshi_mrag"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm font-accent text-muted-foreground hover:text-mrag-teal transition-colors"
+                      >
+                        YouTube
+                      </a>
+                      <a
+                        href="https://www.instagram.com/mrag_official/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm font-accent text-muted-foreground hover:text-mrag-teal transition-colors"
+                      >
+                        Instagram
                       </a>
                     </div>
                   </div>
@@ -122,7 +138,6 @@ const ContactPage = () => {
                   </form>
                 </Reveal>
 
-                {/* Image below form */}
                 <Reveal delay={0.3}>
                   <div className="mt-8 relative overflow-hidden aspect-[21/9]">
                     <img src={heroImg} alt="MRAG 공간" className="w-full h-full object-cover" />

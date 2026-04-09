@@ -30,7 +30,7 @@ export const ContactCtaSection = () => {
             </p>
           </Reveal>
 
-          {/* Direct contacts — human, personal */}
+          {/* Direct contacts */}
           <Reveal delay={0.3}>
             <div className="mt-10 space-y-5">
               <div className="flex items-center gap-5">
@@ -71,6 +71,28 @@ export const ContactCtaSection = () => {
                 className="px-7 py-3 border border-mrag-warm-white/10 text-mrag-warm-white/70 text-sm hover:border-mrag-warm-white/25 transition-colors font-accent"
               >
                 business@mrag.co.kr
+              </a>
+            </div>
+          </Reveal>
+
+          {/* Social links */}
+          <Reveal delay={0.5}>
+            <div className="mt-8 flex gap-5">
+              <a
+                href="https://www.youtube.com/@maboroshi_mrag"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs font-accent text-mrag-warm-white/25 hover:text-mrag-teal transition-colors uppercase tracking-wider"
+              >
+                YouTube
+              </a>
+              <a
+                href="https://www.instagram.com/mrag_official/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs font-accent text-mrag-warm-white/25 hover:text-mrag-teal transition-colors uppercase tracking-wider"
+              >
+                Instagram
               </a>
             </div>
           </Reveal>

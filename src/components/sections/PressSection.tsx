@@ -2,10 +2,10 @@ import { Reveal } from '@/components/animations/Reveal';
 import { Link } from 'react-router-dom';
 
 const articles = [
-  { date: '2025.03', tag: '사업 확장', title: 'MRAG, 필리핀 San Fernando 미디어카페 오픈' },
-  { date: '2025.01', tag: '수상', title: 'iF Design Award / TEA Award 수상' },
-  { date: '2024.11', tag: '인증', title: 'GS 1등급 인증 획득, 특허 20건 등록' },
-  { date: '2024.09', tag: '론칭', title: 'TIKITAKA 상업공간 전환 플랫폼 공식 론칭' },
+  { date: '2025.03', tag: '사업 확장', title: 'MRAG, 필리핀 San Fernando 미디어카페 오픈', link: '/press' },
+  { date: '2025.01', tag: '수상', title: 'iF Design Award / TEA Award 수상', link: '/press' },
+  { date: '2024.11', tag: '인증', title: 'GS 1등급 인증 획득, 특허 20건 등록', link: '/press' },
+  { date: '2024.09', tag: '론칭', title: 'TIKITAKA 상업공간 전환 플랫폼 공식 론칭', link: '/press' },
 ];
 
 export const PressSection = () => {
@@ -27,20 +27,53 @@ export const PressSection = () => {
         <div className="divide-y divide-border">
           {articles.map((article, i) => (
             <Reveal key={article.title} delay={i * 0.06}>
-              <article className="py-6 flex items-baseline justify-between gap-6 group cursor-pointer">
-                <div className="flex items-baseline gap-4 min-w-0">
-                  <span className="font-accent text-xs text-muted-foreground shrink-0 w-16">{article.date}</span>
-                  <h3 className="text-base md:text-lg font-semibold text-foreground group-hover:text-mrag-teal transition-colors truncate">
-                    {article.title}
-                  </h3>
-                </div>
-                <span className="shrink-0 px-2 py-0.5 text-[10px] font-bold font-accent text-mrag-teal bg-mrag-teal/8 uppercase tracking-wider">
-                  {article.tag}
-                </span>
-              </article>
+              <Link to={article.link}>
+                <article className="py-6 flex items-baseline justify-between gap-6 group cursor-pointer">
+                  <div className="flex items-baseline gap-4 min-w-0">
+                    <span className="font-accent text-xs text-muted-foreground shrink-0 w-16">{article.date}</span>
+                    <h3 className="text-base md:text-lg font-semibold text-foreground group-hover:text-mrag-teal transition-colors truncate">
+                      {article.title}
+                    </h3>
+                  </div>
+                  <span className="shrink-0 px-2 py-0.5 text-[10px] font-bold font-accent text-mrag-teal bg-mrag-teal/8 uppercase tracking-wider">
+                    {article.tag}
+                  </span>
+                </article>
+              </Link>
             </Reveal>
           ))}
         </div>
+
+        {/* Social media links */}
+        <Reveal delay={0.3}>
+          <div className="mt-12 pt-8 border-t border-border flex flex-wrap items-center gap-6">
+            <span className="text-xs text-muted-foreground font-accent uppercase tracking-widest">Follow</span>
+            <a
+              href="https://www.youtube.com/@maboroshi_mrag"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-medium text-foreground/70 hover:text-mrag-teal transition-colors font-accent"
+            >
+              YouTube
+            </a>
+            <a
+              href="https://www.instagram.com/mrag_official/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-medium text-foreground/70 hover:text-mrag-teal transition-colors font-accent"
+            >
+              Instagram
+            </a>
+            <a
+              href="https://mrag.co.kr"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-medium text-foreground/70 hover:text-mrag-teal transition-colors font-accent"
+            >
+              mrag.co.kr
+            </a>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
