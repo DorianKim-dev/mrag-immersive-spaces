@@ -27,16 +27,20 @@ export const SiteHeader = () => {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
           scrolled
-            ? 'bg-mrag-navy/95 backdrop-blur-md border-b border-mrag-warm-white/5'
+            ? 'bg-mrag-navy/90 backdrop-blur-xl border-b border-mrag-warm-white/[0.04]'
             : 'bg-transparent'
         }`}
       >
         <div className="container-wide flex items-center justify-between h-16 md:h-20">
-          <Link to="/" className="relative z-50">
-            <span className="font-accent text-xl md:text-2xl font-black tracking-tight text-mrag-warm-white">
+          {/* Logo */}
+          <Link to="/" className="relative z-50 group">
+            <span className="font-accent text-xl md:text-2xl font-black tracking-tight text-mrag-warm-white transition-colors group-hover:text-mrag-teal">
               MRAG
+            </span>
+            <span className="hidden md:inline ml-3 font-accent text-[10px] font-medium text-mrag-warm-white/20 tracking-[0.2em] uppercase">
+              Space Platform
             </span>
           </Link>
 
@@ -46,10 +50,10 @@ export const SiteHeader = () => {
               <Link
                 key={item.href}
                 to={item.href}
-                className={`line-reveal text-sm font-medium transition-colors pb-1 ${
+                className={`line-reveal text-[13px] font-medium tracking-wide transition-colors pb-1 uppercase ${
                   location.pathname === item.href
                     ? 'text-mrag-warm-white'
-                    : 'text-mrag-warm-white/80 hover:text-mrag-warm-white'
+                    : 'text-mrag-warm-white/50 hover:text-mrag-warm-white'
                 }`}
               >
                 {item.label}
@@ -57,7 +61,7 @@ export const SiteHeader = () => {
             ))}
             <Link
               to="/contact"
-              className="text-sm font-semibold px-5 py-2.5 bg-mrag-teal text-accent-foreground rounded-sm hover:bg-mrag-teal-light transition-colors"
+              className="text-[13px] font-semibold px-6 py-2.5 bg-mrag-teal text-accent-foreground hover:bg-mrag-teal-light transition-all duration-300"
             >
               프로젝트 문의
             </Link>
@@ -75,23 +79,24 @@ export const SiteHeader = () => {
         </div>
       </header>
 
-      {/* Mobile menu */}
+      {/* Mobile menu — fullscreen overlay */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.4 }}
             className="fixed inset-0 z-40 bg-mrag-navy flex flex-col justify-center items-center gap-8"
           >
             {navItems.map((item, i) => (
               <motion.div
                 key={item.href}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 + i * 0.08 }}
+                transition={{ delay: 0.1 + i * 0.08, ease: [0.16, 1, 0.3, 1] }}
               >
-                <Link to={item.href} className="text-3xl font-bold text-mrag-warm-white">
+                <Link to={item.href} className="text-4xl font-bold text-mrag-warm-white hover:text-mrag-teal transition-colors">
                   {item.label}
                 </Link>
               </motion.div>
@@ -99,34 +104,20 @@ export const SiteHeader = () => {
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}>
               <Link
                 to="/contact"
-                className="mt-4 text-lg font-semibold px-8 py-3 bg-mrag-teal text-accent-foreground rounded-sm"
+                className="mt-4 text-lg font-semibold px-8 py-3 bg-mrag-teal text-accent-foreground"
               >
                 프로젝트 문의
               </Link>
             </motion.div>
-            {/* Social links in mobile menu */}
+            {/* Social links */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
               className="mt-8 flex gap-6"
             >
-              <a
-                href="https://www.youtube.com/@maboroshi_mrag"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm font-accent text-mrag-warm-white/40 hover:text-mrag-teal transition-colors"
-              >
-                YouTube
-              </a>
-              <a
-                href="https://www.instagram.com/mrag_official/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm font-accent text-mrag-warm-white/40 hover:text-mrag-teal transition-colors"
-              >
-                Instagram
-              </a>
+              <a href="https://youtube.com/@mragofficial6481?si=iN0e0W9CdYvFcRXv" target="_blank" rel="noopener noreferrer" className="text-sm font-accent text-mrag-warm-white/30 hover:text-mrag-teal transition-colors">YouTube</a>
+              <a href="https://www.instagram.com/mrag.official?igsh=YXM2MmZvYm5nNDVk" target="_blank" rel="noopener noreferrer" className="text-sm font-accent text-mrag-warm-white/30 hover:text-mrag-teal transition-colors">Instagram</a>
             </motion.div>
           </motion.div>
         )}
