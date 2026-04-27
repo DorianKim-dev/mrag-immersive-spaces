@@ -60,9 +60,9 @@ export const CaseStudiesSection = () => {
             href={cases[0].link}
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative overflow-hidden aspect-[2.4/1] mb-5 block"
+            className="group award-card relative overflow-hidden aspect-[2.4/1] mb-5 block"
           >
-              <img src={cases[0].image} alt={cases[0].title} className="w-full h-full object-cover transition-all duration-[1.5s] group-hover:scale-[1.05] group-hover:brightness-110" />
+              <img src={cases[0].image} alt={cases[0].title} className="award-card-image w-full h-full object-cover transition-all duration-[1.5s] group-hover:scale-[1.05] group-hover:brightness-110" />
             <div className="absolute inset-0 bg-gradient-to-r from-mrag-navy/90 via-mrag-navy/50 to-transparent transition-all duration-700 group-hover:via-mrag-navy/60" />
             <div className="absolute inset-0 border border-transparent transition-all duration-500 group-hover:border-mrag-teal/15" />
             <div className="absolute bottom-0 left-0 p-8 md:p-14 max-w-xl">
@@ -90,9 +90,9 @@ export const CaseStudiesSection = () => {
                   href={c.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`${idx === 0 ? 'md:col-span-3' : 'md:col-span-2'} group relative overflow-hidden aspect-[16/9] ${idx === 1 ? 'md:aspect-auto md:h-full' : ''} block`}
+                  className={`${idx === 0 ? 'md:col-span-3' : 'md:col-span-2'} group award-card relative overflow-hidden aspect-[16/9] ${idx === 1 ? 'md:aspect-auto md:h-full' : ''} block`}
                 >
-                  <img src={c.image} alt={c.title} className="w-full h-full object-cover transition-all duration-[1.2s] group-hover:scale-[1.05] group-hover:brightness-110" />
+                  <img src={c.image} alt={c.title} className="award-card-image w-full h-full object-cover transition-all duration-[1.2s] group-hover:scale-[1.05] group-hover:brightness-110" />
                   <div className="absolute inset-0 bg-gradient-to-t from-mrag-navy/80 to-transparent transition-all duration-500 group-hover:from-mrag-navy/90" />
                   <div className="absolute inset-0 border border-transparent transition-all duration-500 group-hover:border-mrag-teal/15" />
                   <div className="absolute bottom-6 left-6">
@@ -102,8 +102,8 @@ export const CaseStudiesSection = () => {
                   </div>
                 </a>
               ) : (
-                <div className={`${idx === 0 ? 'md:col-span-3' : 'md:col-span-2'} group relative overflow-hidden aspect-[16/9] ${idx === 1 ? 'md:aspect-auto md:h-full' : ''}`}>
-                  <img src={c.image} alt={c.title} className="w-full h-full object-cover transition-all duration-[1.2s] group-hover:scale-[1.05] group-hover:brightness-110" />
+                <div className={`${idx === 0 ? 'md:col-span-3' : 'md:col-span-2'} group award-card relative overflow-hidden aspect-[16/9] ${idx === 1 ? 'md:aspect-auto md:h-full' : ''}`}>
+                  <img src={c.image} alt={c.title} className="award-card-image w-full h-full object-cover transition-all duration-[1.2s] group-hover:scale-[1.05] group-hover:brightness-110" />
                   <div className="absolute inset-0 bg-gradient-to-t from-mrag-navy/80 to-transparent transition-all duration-500 group-hover:from-mrag-navy/90" />
                   <div className="absolute inset-0 border border-transparent transition-all duration-500 group-hover:border-mrag-teal/15" />
                   <div className="absolute bottom-6 left-6">

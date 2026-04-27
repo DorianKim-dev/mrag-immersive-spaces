@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { SOCIAL_LINKS } from '@/constants/links';
 
 export const SiteFooter = () => {
   const scrollToTop = () => {
@@ -18,9 +19,9 @@ export const SiteFooter = () => {
               <br />구축부터 장기 운영까지, 공간의 가치를 높입니다.
             </p>
             <div className="mt-6 flex gap-5">
-              <a href="https://youtube.com/@mragofficial6481?si=iN0e0W9CdYvFcRXv" target="_blank" rel="noopener noreferrer" className="text-xs font-accent text-mrag-warm-white/25 hover:text-mrag-teal transition-colors uppercase tracking-wider">YouTube</a>
-              <a href="https://www.instagram.com/mrag.official?igsh=YXM2MmZvYm5nNDVk" target="_blank" rel="noopener noreferrer" className="text-xs font-accent text-mrag-warm-white/25 hover:text-mrag-teal transition-colors uppercase tracking-wider">Instagram</a>
-              <a href="https://mrag.co.kr" target="_blank" rel="noopener noreferrer" className="text-xs font-accent text-mrag-warm-white/25 hover:text-mrag-teal transition-colors uppercase tracking-wider">Website</a>
+              <a href={SOCIAL_LINKS.youtube} target="_blank" rel="noopener noreferrer" className="text-xs font-accent text-mrag-warm-white/25 hover:text-mrag-teal transition-colors uppercase tracking-wider">YouTube</a>
+              <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer" className="text-xs font-accent text-mrag-warm-white/25 hover:text-mrag-teal transition-colors uppercase tracking-wider">Instagram</a>
+              <a href={SOCIAL_LINKS.website} target="_blank" rel="noopener noreferrer" className="text-xs font-accent text-mrag-warm-white/25 hover:text-mrag-teal transition-colors uppercase tracking-wider">Website</a>
             </div>
           </div>
           <div className="md:col-span-2">

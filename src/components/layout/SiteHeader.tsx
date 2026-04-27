@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
+import { SOCIAL_LINKS } from '@/constants/links';
 
 const navItems = [
   { label: 'Work', href: '/work' },
@@ -12,6 +13,8 @@ export const SiteHeader = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
+  const { scrollYProgress } = useScroll();
+  const progressScale = useSpring(scrollYProgress, { stiffness: 120, damping: 24, mass: 0.2 });
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 60);
@@ -77,6 +80,10 @@ export const SiteHeader = () => {
             <span className={`block w-6 h-0.5 bg-mrag-warm-white transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-1' : ''}`} />
           </button>
         </div>
+        <motion.div
+          className="absolute bottom-0 left-0 h-px w-full origin-left bg-mrag-teal/70"
+          style={{ scaleX: progressScale }}
+        />
       </header>
 
       {/* Mobile menu — fullscreen overlay */}
@@ -116,8 +123,8 @@ export const SiteHeader = () => {
               transition={{ delay: 0.5 }}
               className="mt-8 flex gap-6"
             >
-              <a href="https://youtube.com/@mragofficial6481?si=iN0e0W9CdYvFcRXv" target="_blank" rel="noopener noreferrer" className="text-sm font-accent text-mrag-warm-white/30 hover:text-mrag-teal transition-colors">YouTube</a>
-              <a href="https://www.instagram.com/mrag.official?igsh=YXM2MmZvYm5nNDVk" target="_blank" rel="noopener noreferrer" className="text-sm font-accent text-mrag-warm-white/30 hover:text-mrag-teal transition-colors">Instagram</a>
+              <a href={SOCIAL_LINKS.youtube} target="_blank" rel="noopener noreferrer" className="text-sm font-accent text-mrag-warm-white/30 hover:text-mrag-teal transition-colors">YouTube</a>
+              <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer" className="text-sm font-accent text-mrag-warm-white/30 hover:text-mrag-teal transition-colors">Instagram</a>
             </motion.div>
           </motion.div>
         )}

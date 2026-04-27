@@ -2,6 +2,22 @@ import { SiteHeader } from '@/components/layout/SiteHeader';
 import { SiteFooter } from '@/components/layout/SiteFooter';
 import { Reveal } from '@/components/animations/Reveal';
 import heroImg from '@/assets/projects/hero-dining.jpg';
+import { SOCIAL_LINKS } from '@/constants/links';
+
+const proposalSteps = [
+  { title: '공간 진단', desc: '면적, 동선, 기존 장비, 운영 목적을 확인해 적용 가능한 모듈을 빠르게 좁힙니다.' },
+  { title: '콘텐츠 매칭', desc: 'F&B, 전시, 교육, 팝업, K-Culture 등 목적에 맞는 솔루션과 장면 구성을 제안합니다.' },
+  { title: '운영 설계', desc: 'HISCO 기준으로 구축 이후 업데이트, 이벤트, 유지보수 흐름까지 함께 설계합니다.' },
+];
+
+const projectTypes = [
+  'F&B / 카페 / 레스토랑',
+  '전시 / 미디어아트',
+  '교육 / 공공',
+  '엔터테인먼트 / 복합 공간',
+  '팝업 / 브랜드 캠페인',
+  '해외 / 글로벌 운영',
+];
 
 const ContactPage = () => {
   return (
@@ -80,7 +96,7 @@ const ContactPage = () => {
                     </div>
                     <div className="pt-4 flex gap-5">
                       <a
-                        href="https://www.youtube.com/@maboroshi_mrag"
+                        href={SOCIAL_LINKS.youtube}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-sm font-accent text-muted-foreground hover:text-mrag-teal transition-colors"
@@ -88,7 +104,7 @@ const ContactPage = () => {
                         YouTube
                       </a>
                       <a
-                        href="https://www.instagram.com/mrag_official/"
+                        href={SOCIAL_LINKS.instagram}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-sm font-accent text-muted-foreground hover:text-mrag-teal transition-colors"
@@ -121,11 +137,9 @@ const ContactPage = () => {
                     <div>
                       <label className="block text-xs font-accent font-bold text-muted-foreground uppercase tracking-wider mb-2">프로젝트 유형</label>
                       <select className="w-full px-4 py-3.5 border border-border bg-transparent text-foreground focus:border-mrag-teal focus:outline-none transition-colors text-sm">
-                        <option>F&B / 카페 / 레스토랑</option>
-                        <option>전시 / 미디어아트</option>
-                        <option>교육 / 공공</option>
-                        <option>엔터테인먼트 / 복합 공간</option>
-                        <option>기타</option>
+                        {projectTypes.map((type) => (
+                          <option key={type}>{type}</option>
+                        ))}
                       </select>
                     </div>
                     <div>
@@ -146,6 +160,41 @@ const ContactPage = () => {
                 </Reveal>
               </div>
             </div>
+          </div>
+        </section>
+
+        <section className="section-dark py-20 md:py-28">
+          <div className="container-wide">
+            <Reveal>
+              <span className="section-label text-mrag-teal">Proposal Flow</span>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <h2 className="mt-5 heading-section text-mrag-warm-white max-w-2xl">
+                문의 후 바로
+                <br />
+                공간 운영안까지 연결합니다.
+              </h2>
+            </Reveal>
+            <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-3">
+              {proposalSteps.map((step, i) => (
+                <Reveal key={step.title} delay={0.15 + i * 0.06}>
+                  <div className="h-full border border-mrag-warm-white/[0.06] bg-mrag-warm-white/[0.03] p-6 transition-all duration-500 hover:-translate-y-1 hover:border-mrag-teal/30">
+                    <span className="font-accent text-xs text-mrag-teal">STEP {i + 1}</span>
+                    <h3 className="mt-5 text-xl font-bold text-mrag-warm-white">{step.title}</h3>
+                    <p className="mt-3 text-sm leading-relaxed text-mrag-warm-white/35">{step.desc}</p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+            <Reveal delay={0.35}>
+              <div className="mt-10 flex flex-wrap gap-2">
+                {projectTypes.map((type) => (
+                  <span key={type} className="border border-mrag-teal/15 bg-mrag-teal/[0.04] px-3 py-1.5 text-xs font-accent text-mrag-teal/75">
+                    {type}
+                  </span>
+                ))}
+              </div>
+            </Reveal>
           </div>
         </section>
       </main>

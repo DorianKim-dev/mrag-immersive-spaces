@@ -72,6 +72,31 @@ export const CTA_IMAGES = {
   map: { src: globalMap, alt: '글로벌 네트워크' },
 };
 
+// ── 콘텐츠 솔루션 이미지 ──
+import solutionNfc from '@/assets/solutions/solution-nfc.jpg';
+import solutionPop from '@/assets/solutions/solution-pop.jpg';
+import solutionQuiz from '@/assets/solutions/solution-quiz.jpg';
+import solutionPhoto from '@/assets/solutions/solution-photo.jpg';
+import solutionGallery from '@/assets/solutions/solution-gallery.jpg';
+import solutionDnd from '@/assets/solutions/solution-dnd.jpg';
+import solutionGuestbook from '@/assets/solutions/solution-guestbook.jpg';
+import solutionCloudwall from '@/assets/solutions/solution-cloudwall.jpg';
+import solutionDevice from '@/assets/solutions/solution-device.jpg';
+import solutionTransition from '@/assets/solutions/solution-transition.jpg';
+
+export const SOLUTION_IMAGES = {
+  nfc: { src: solutionNfc, alt: 'NFC 태깅 기반 미디어월 전환' },
+  pop: { src: solutionPop, alt: 'POP 콘텐츠 공간 연출' },
+  quiz: { src: solutionQuiz, alt: '터치형 퀴즈 콘텐츠' },
+  photo: { src: solutionPhoto, alt: '인생네컷 미디어월 확장' },
+  gallery: { src: solutionGallery, alt: '인터랙티브 갤러리' },
+  dnd: { src: solutionDnd, alt: '드래그 앤 드롭 참여 콘텐츠' },
+  guestbook: { src: solutionGuestbook, alt: '디지털 방명록' },
+  cloudwall: { src: solutionCloudwall, alt: '클라우드월 아카이브' },
+  device: { src: solutionDevice, alt: '모바일·태블릿·키오스크 연동' },
+  transition: { src: solutionTransition, alt: '3D 트랜지션 공간 전환' },
+};
+
 // ── Press 페이지용 프리뷰 이미지 (호버 시 표시) ──
 export const PRESS_PREVIEW_IMAGES = [
   globalOps,

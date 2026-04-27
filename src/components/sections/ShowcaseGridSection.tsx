@@ -109,7 +109,7 @@ export const ShowcaseGridSection = () => {
           {filteredItems.map((item, i) => (
             <motion.div
               key={item.title}
-              className={`${spanClasses[item.span]} group relative overflow-hidden cursor-pointer showcase-card`}
+              className={`${spanClasses[item.span]} group award-card relative overflow-hidden cursor-pointer showcase-card`}
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{
@@ -117,6 +117,7 @@ export const ShowcaseGridSection = () => {
                 duration: 0.7,
                 ease: [0.16, 1, 0.3, 1],
               }}
+              whileHover={{ y: -8 }}
               layout
             >
               {/* Image */}
@@ -124,7 +125,7 @@ export const ShowcaseGridSection = () => {
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="w-full h-full object-cover transition-all duration-[1.2s] ease-out group-hover:scale-[1.08] group-hover:brightness-110"
+                  className="award-card-image w-full h-full object-cover transition-all duration-[1.2s] ease-out group-hover:scale-[1.08] group-hover:brightness-110"
                   loading="lazy"
                 />
 
@@ -133,6 +134,7 @@ export const ShowcaseGridSection = () => {
 
                 {/* Teal glow border on hover */}
                 <div className="absolute inset-0 border border-transparent transition-all duration-500 group-hover:border-mrag-teal/20 group-hover:shadow-[inset_0_0_30px_rgba(72,187,164,0.05)]" />
+                <div className="absolute inset-0 origin-left scale-x-0 bg-mrag-teal/10 mix-blend-screen transition-transform duration-700 ease-out group-hover:scale-x-100" />
 
                 {/* Content overlay */}
                 <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6">

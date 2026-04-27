@@ -226,6 +226,51 @@
     transform: translateY(-3px);
     box-shadow: 0 8px 40px rgba(72, 187, 164, 0.06), 0 0 0 1px rgba(72, 187, 164, 0.08);
   }
+
+  .award-card {
+    isolation: isolate;
+  }
+
+  .award-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    background: linear-gradient(110deg, transparent 0%, rgba(255, 255, 255, 0.18) 42%, transparent 58%);
+    transform: translateX(-130%) skewX(-12deg);
+    transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    mix-blend-mode: screen;
+  }
+
+  .award-card:hover::after {
+    transform: translateX(130%) skewX(-12deg);
+  }
+
+  .award-card-image {
+    clip-path: inset(0);
+    transition-property: transform, filter, clip-path;
+  }
+
+  .award-card:hover .award-card-image {
+    clip-path: inset(2.5%);
+  }
+
+  .value-scanline {
+    pointer-events: none;
+    background:
+      linear-gradient(90deg, transparent, rgba(72, 187, 164, 0.08), transparent),
+      repeating-linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 0.035) 0,
+        rgba(255, 255, 255, 0.035) 1px,
+        transparent 1px,
+        transparent 18px
+      );
+    background-size: 220% 100%, auto;
+    animation: value-scan 8s linear infinite;
+  }
+
 }
 
 /* ─── Marquee animation ─── */
@@ -250,6 +295,11 @@
   0% { transform: scale(0.95); opacity: 0.7; }
   50% { transform: scale(1); opacity: 0.3; }
   100% { transform: scale(0.95); opacity: 0.7; }
+}
+
+@keyframes value-scan {
+  0% { background-position: 120% 0, 0 0; }
+  100% { background-position: -120% 0, 0 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {

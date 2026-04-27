@@ -14,6 +14,8 @@ import immersiveCherry from '@/assets/projects/immersive-cherry.jpg';
 import immersiveBeauty from '@/assets/projects/immersive-beauty.jpg';
 import scenarioFlamingo from '@/assets/projects/scenario-flamingo.jpg';
 import heroMain from '@/assets/projects/hero-main.jpg';
+import { SOLUTION_IMAGES } from '@/constants/images';
+import { FEATURED_VIDEO, SOCIAL_LINKS } from '@/constants/links';
 import { useState } from 'react';
 
 type ProjectCategory = '전체' | '교육·공공' | 'F&B·상업' | '미디어아트·전시' | '해외·글로벌';
@@ -147,6 +149,19 @@ const projects: Project[] = [
 
 const categories: ProjectCategory[] = ['전체', '교육·공공', 'F&B·상업', '미디어아트·전시', '해외·글로벌'];
 
+const platformHighlights = [
+  { title: '콘텐츠로 바뀌는 공간', desc: 'F&B, 전시, 팝업, K-Culture, 미디어아트까지 시간대와 목적에 따라 다른 장면을 운영합니다.' },
+  { title: '운영까지 포함한 구축', desc: 'HISCO 프레임워크로 하드웨어, 인테리어, 소프트웨어, 콘텐츠, 운영을 하나의 구조로 묶습니다.' },
+  { title: '참여형 솔루션', desc: 'NFC, 퀴즈, 인생네컷, 디지털 방명록, 클라우드월 등 사용자가 직접 반응하는 콘텐츠를 제공합니다.' },
+];
+
+const solutionPreviews = [
+  { title: 'NFC Trigger', image: SOLUTION_IMAGES.nfc.src },
+  { title: 'Interactive Quiz', image: SOLUTION_IMAGES.quiz.src },
+  { title: 'Digital Guestbook', image: SOLUTION_IMAGES.guestbook.src },
+  { title: '3D Transition', image: SOLUTION_IMAGES.transition.src },
+];
+
 const WorkPage = () => {
   const [filter, setFilter] = useState<ProjectCategory>('전체');
 
@@ -219,6 +234,51 @@ const WorkPage = () => {
           </div>
         </section>
 
+        <section className="section-cream py-20 md:py-28 overflow-hidden">
+          <div className="container-wide">
+            <Reveal>
+              <span className="section-label text-mrag-teal">TIKITAKA Platform</span>
+            </Reveal>
+            <div className="mt-6 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+              <Reveal delay={0.1} className="lg:col-span-5">
+                <h2 className="heading-section text-mrag-warm-white">
+                  구축 사례를
+                  <br />
+                  운영 상품으로 확장합니다.
+                </h2>
+                <p className="mt-5 body-large">
+                  참고자료의 콘텐츠 솔루션을 Work 페이지에도 연결해, 프로젝트 목록이 단순 포트폴리오가 아니라 실제 판매 가능한 운영 패키지로 보이도록 구성했습니다.
+                </p>
+              </Reveal>
+              <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-3 gap-3">
+                {platformHighlights.map((item, i) => (
+                  <Reveal key={item.title} delay={0.15 + i * 0.06}>
+                    <div className="h-full border border-mrag-warm-white/[0.06] bg-mrag-warm-white/[0.03] p-6 transition-all duration-500 hover:-translate-y-1 hover:border-mrag-teal/30">
+                      <span className="font-accent text-xs text-mrag-teal">0{i + 1}</span>
+                      <h3 className="mt-4 text-lg font-bold text-mrag-warm-white">{item.title}</h3>
+                      <p className="mt-3 text-sm leading-relaxed text-mrag-warm-white/35">{item.desc}</p>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-3">
+              {solutionPreviews.map((item, i) => (
+                <Reveal key={item.title} delay={0.2 + i * 0.05}>
+                  <div className="group relative aspect-[4/3] overflow-hidden">
+                    <img src={item.image} alt={item.title} className="h-full w-full object-cover transition-all duration-[1.2s] group-hover:scale-110 group-hover:brightness-110" loading="lazy" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-mrag-navy/85 via-transparent to-transparent" />
+                    <span className="absolute bottom-4 left-4 font-accent text-xs font-bold uppercase tracking-wider text-mrag-warm-white/75">
+                      {item.title}
+                    </span>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* YouTube media section */}
         <section className="section-dark py-20 md:py-28">
           <div className="container-wide">
@@ -233,8 +293,8 @@ const WorkPage = () => {
                 <div className="aspect-video">
                   <iframe
                     className="w-full h-full"
-                    src="https://www.youtube.com/embed/videoseries?list=UU_MRAG_CHANNEL"
-                    title="MRAG 프로젝트 영상"
+                    src={FEATURED_VIDEO.embedUrl}
+                    title={FEATURED_VIDEO.title}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                     loading="lazy"
@@ -244,11 +304,11 @@ const WorkPage = () => {
               <Reveal delay={0.2}>
                 <div className="flex flex-col justify-center">
                   <p className="body-large max-w-md">
-                    MRAG의 실제 프로젝트 영상과 콘텐츠를 확인하세요. 몰입형 공간, 미디어아트, 운영 시나리오의 실제 모습을 영상으로 만나볼 수 있습니다.
+                    공식 채널의 대표 영상으로 MRAG의 AI 기반 공간 운영과 미디어월 경험을 보여줍니다. 몰입형 공간, 미디어아트, 운영 시나리오의 실제 모습을 영상으로 만나볼 수 있습니다.
                   </p>
                   <div className="mt-8 flex gap-4">
                     <a
-                      href="https://www.youtube.com/@maboroshi_mrag"
+                      href={SOCIAL_LINKS.youtube}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="px-6 py-3 bg-mrag-teal text-accent-foreground font-semibold text-sm hover:bg-mrag-teal-light transition-colors"
@@ -256,7 +316,7 @@ const WorkPage = () => {
                       YouTube 채널 보기
                     </a>
                     <a
-                      href="https://www.instagram.com/mrag_official/"
+                      href={SOCIAL_LINKS.instagram}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="px-6 py-3 border border-mrag-warm-white/15 text-mrag-warm-white/70 text-sm hover:border-mrag-warm-white/30 transition-colors font-accent"

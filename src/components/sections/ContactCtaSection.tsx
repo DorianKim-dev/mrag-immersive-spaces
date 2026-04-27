@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { CTA_IMAGES } from '@/constants/images';
+import { SOCIAL_LINKS } from '@/constants/links';
 
 export const ContactCtaSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -80,8 +81,8 @@ export const ContactCtaSection = () => {
 
         <Reveal delay={0.5}>
           <div className="mt-8 flex gap-5">
-              <a href="https://youtube.com/@mragofficial6481?si=iN0e0W9CdYvFcRXv" target="_blank" rel="noopener noreferrer" className="text-xs font-accent text-mrag-warm-white/20 hover:text-mrag-teal transition-colors uppercase tracking-wider">YouTube</a>
-              <a href="https://www.instagram.com/mrag.official?igsh=YXM2MmZvYm5nNDVk" target="_blank" rel="noopener noreferrer" className="text-xs font-accent text-mrag-warm-white/20 hover:text-mrag-teal transition-colors uppercase tracking-wider">Instagram</a>
+              <a href={SOCIAL_LINKS.youtube} target="_blank" rel="noopener noreferrer" className="text-xs font-accent text-mrag-warm-white/20 hover:text-mrag-teal transition-colors uppercase tracking-wider">YouTube</a>
+              <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer" className="text-xs font-accent text-mrag-warm-white/20 hover:text-mrag-teal transition-colors uppercase tracking-wider">Instagram</a>
           </div>
         </Reveal>
       </motion.div>

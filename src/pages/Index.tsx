@@ -2,6 +2,7 @@ import { SiteHeader } from '@/components/layout/SiteHeader';
 import { SiteFooter } from '@/components/layout/SiteFooter';
 import { HeroSection } from '@/components/sections/HeroSection';
 import { ProblemSolutionSection } from '@/components/sections/ProblemSolutionSection';
+import { ContentSolutionSection } from '@/components/sections/ContentSolutionSection';
 import { HiscoSection } from '@/components/sections/HiscoSection';
 import { ShowcaseGridSection } from '@/components/sections/ShowcaseGridSection';
 import { ValueShiftSection } from '@/components/sections/ValueShiftSection';
@@ -19,6 +20,7 @@ const Index = () => {
       <main>
         <HeroSection />
         <ProblemSolutionSection />
+        <ContentSolutionSection />
         <HiscoSection />
         <ShowcaseGridSection />
         <ValueShiftSection />

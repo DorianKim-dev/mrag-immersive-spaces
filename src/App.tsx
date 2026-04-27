@@ -8,6 +8,7 @@ import WorkPage from "./pages/WorkPage.tsx";
 import PressPage from "./pages/PressPage.tsx";
 import ContactPage from "./pages/ContactPage.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import FloatingTopButton from "./components/layout/FloatingTopButton.tsx";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +25,7 @@ const App = () => (
           <Route path="/contact" element={<ContactPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <FloatingTopButton />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

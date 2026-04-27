@@ -5,6 +5,7 @@ import { Marquee } from '@/components/animations/Marquee';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useRef } from 'react';
 import { PRESS_PREVIEW_IMAGES } from '@/constants/images';
+import { NEWS_LINKS, SOCIAL_LINKS } from '@/constants/links';
 
 /**
  * ============================================
@@ -17,12 +18,21 @@ import { PRESS_PREVIEW_IMAGES } from '@/constants/images';
  * link: 외부 링크가 있으면 URL, 없으면 undefined
  */
 const articles = [
-  { date: '2025.03', tag: '사업 확장', title: 'MRAG, 필리핀 San Fernando 미디어카페 오픈', summary: '동남아 시장 진출 첫 프로젝트로 해외 사업 본격화. San Fernando 지역 No.1 미디어카페로 자리매김.', link: undefined, previewIdx: 0 },
-  { date: '2025.01', tag: '수상', title: 'iF Design Award / TEA Award 수상', summary: '글로벌 디자인 어워드에서 몰입형 공간 기술력 인정. 국제 무대에서의 MRAG 경쟁력 입증.', link: undefined, previewIdx: 1 },
-  { date: '2024.11', tag: '인증', title: 'GS 1등급 인증 획득, 특허 20건 등록', summary: '품질 인증 및 핵심 기술 특허 확보. 공공·민간 프로젝트 신뢰 기반 강화.', link: undefined, previewIdx: 2 },
-  { date: '2024.09', tag: '론칭', title: 'TIKITAKA 상업공간 전환 플랫폼 공식 론칭', summary: 'B2G 역량을 B2C/B2B 상업 시장으로 확장하는 플랫폼 공식 발표.', link: undefined, previewIdx: 3 },
-  { date: '2024.06', tag: '전시', title: '2024 서울 스마트시티 엑스포 참여', summary: '공간 전환 기술 데모 및 TIKITAKA 플랫폼 소개. 다수의 B2B 파트너십 논의 진행.', link: undefined, previewIdx: 4 },
+  { date: '2026.04', tag: '사업 확장', title: 'MRAG, IFS 2026에서 TIKITAKA 공개', summary: '프랜차이즈 창업·산업 박람회에서 추가 인테리어 공사 없이 운영 시나리오를 바꾸는 상업 공간 플랫폼을 선보였습니다.', link: NEWS_LINKS.ifs2026, previewIdx: 0 },
+  { date: '2025.11', tag: '교육 공간', title: 'MRAG·KERIS, AI 기반 학습공간 ‘미디어숲’ 개관', summary: '20m 초대형 4K 미디어월과 AI 창작 기능을 갖춘 업데이트형 교육 공간 모델에 MRAG 공간운영 솔루션이 적용됐습니다.', link: NEWS_LINKS.mediaForest, previewIdx: 2 },
+  { date: '2025.10', tag: 'AI 전환', title: 'AI 콘텐츠 업데이트로 진화하는 미래교육센터 구축', summary: '교육 주제와 테마별 콘텐츠를 현장에서 운영할 수 있는 AI 기반 가변형 교육 공간 모델을 소개했습니다.', link: NEWS_LINKS.futureEducation, previewIdx: 5 },
+  { date: '2025.03', tag: '글로벌', title: '필리핀 San Fernando 미디어카페 운영', summary: '해외 F&B 공간에 HISCO 기반 운영 구조를 적용해 글로벌 상업 공간 확장의 레퍼런스를 만들었습니다.', link: undefined, previewIdx: 0 },
+  { date: '2025.01', tag: '수상', title: 'iF Design Award / TEA Award 수상', summary: '글로벌 디자인 어워드에서 몰입형 공간 기술력을 인정받으며 국제 무대에서의 경쟁력을 입증했습니다.', link: undefined, previewIdx: 1 },
+  { date: '2024.11', tag: '인증', title: 'GS 1등급 인증 획득, 특허 20건 등록', summary: '품질 인증 및 핵심 기술 특허 확보로 공공·민간 프로젝트의 신뢰 기반을 강화했습니다.', link: undefined, previewIdx: 2 },
+  { date: '2024.09', tag: '론칭', title: 'TIKITAKA 상업공간 전환 플랫폼 공식 론칭', summary: 'B2G 구축 역량을 B2B/B2C 상업 시장으로 확장하는 공간 운영 플랫폼을 공식화했습니다.', link: undefined, previewIdx: 3 },
   { date: '2024.03', tag: '프로젝트', title: '연세대학교 Y-FLEX / Y-FLOW 구축 완료', summary: '연세대학교 국제캠퍼스 및 신촌캠퍼스에 스마트 교육 공간 구축 완료.', link: 'https://mrag.co.kr/works/%ec%97%b0%ec%84%b8%eb%8c%80%ed%95%99%ea%b5%90-%ea%b5%ad%ec%a0%9c%ec%ba%a0%ed%8d%bc%ec%8a%a4-y-flex/', previewIdx: 5 },
+];
+
+const pressMetrics = [
+  { value: '100+', label: '누적 프로젝트' },
+  { value: '50+', label: '운영 공간' },
+  { value: '95%', label: '공간 운영 유지율' },
+  { value: '20+', label: '특허·인증 기반' },
 ];
 
 /** 한 번에 표시할 기사 수 */
@@ -69,8 +79,18 @@ const PressPage = () => {
             </Reveal>
             <Reveal delay={0.2}>
               <div className="mt-6 flex gap-5">
-                <a href="https://youtube.com/@mragofficial6481?si=iN0e0W9CdYvFcRXv" target="_blank" rel="noopener noreferrer" className="text-sm font-accent text-mrag-warm-white/30 hover:text-mrag-teal transition-colors">YouTube →</a>
-                <a href="https://www.instagram.com/mrag.official?igsh=YXM2MmZvYm5nNDVk" target="_blank" rel="noopener noreferrer" className="text-sm font-accent text-mrag-warm-white/30 hover:text-mrag-teal transition-colors">Instagram →</a>
+                <a href={SOCIAL_LINKS.youtube} target="_blank" rel="noopener noreferrer" className="text-sm font-accent text-mrag-warm-white/30 hover:text-mrag-teal transition-colors">YouTube →</a>
+                <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer" className="text-sm font-accent text-mrag-warm-white/30 hover:text-mrag-teal transition-colors">Instagram →</a>
+              </div>
+            </Reveal>
+            <Reveal delay={0.25}>
+              <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-3">
+                {pressMetrics.map((item) => (
+                  <div key={item.label} className="border border-mrag-warm-white/[0.06] bg-mrag-warm-white/[0.03] p-4">
+                    <span className="font-accent text-2xl font-black text-mrag-warm-white">{item.value}</span>
+                    <p className="mt-1 text-xs text-mrag-warm-white/30">{item.label}</p>
+                  </div>
+                ))}
               </div>
             </Reveal>
           </div>
