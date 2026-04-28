@@ -27,3 +27,4 @@ public/*.pptx
 *.njsproj
 *.sln
 *.sw?
+.vercel

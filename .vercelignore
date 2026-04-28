@@ -1,0 +1,14 @@
+node_modules
+node_modules/**
+dist
+dist/**
+tmp
+tmp/**
+.git
+.git/**
+public/*.pdf
+public/*.pptx
+public/**/*.pdf
+public/**/*.pptx
+*.pdf
+*.pptx
