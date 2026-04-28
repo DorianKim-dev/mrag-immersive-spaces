@@ -67,16 +67,16 @@ const HeroImageLayer = ({
   const end = (index + 1) / count;
   const fadeInStart = Math.max(0, start - 0.08);
   const fadeInEnd = start + 0.03;
-  const fadeOutStart = end - 0.1;
-  const fadeOutEnd = Math.min(1, end + 0.02);
+  const fadeOutStart = end - 0.06;
+  const fadeOutEnd = Math.min(1, end + 0.04);
 
   const opacity = useTransform(
     progress,
     [fadeInStart, fadeInEnd, fadeOutStart, fadeOutEnd],
     index === 0 ? [1, 1, 1, 0] : [0, 1, 1, 0],
   );
-  const scale = useTransform(progress, [start, end], [1, 1.18]);
-  const blur = useTransform(progress, [fadeOutStart, fadeOutEnd], ['blur(0px)', 'blur(10px)']);
+  const scale = useTransform(progress, [start, end], [1.04, 1.42]);
+  const blur = useTransform(progress, [fadeOutStart, fadeOutEnd], ['blur(0px)', 'blur(14px)']);
 
   return (
     <motion.div className="absolute inset-0" style={{ opacity, scale, filter: blur }}>
