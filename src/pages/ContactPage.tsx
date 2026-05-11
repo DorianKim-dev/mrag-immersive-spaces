@@ -4,7 +4,7 @@ import { SiteHeader } from '@/components/layout/SiteHeader';
 import { ContactThreeBackdrop } from '@/components/sections/ContactThreeBackdrop';
 import heroImg from '@/assets/projects/hero-dining.jpg';
 import { SOCIAL_LINKS } from '@/constants/links';
-import { FormEvent } from 'react';
+import { FormEvent, useState } from 'react';
 
 const proposalSteps = [
   { title: '공간 진단', desc: '면적, 동선, 기존 장비, 운영 목적을 확인해 적용 가능한 모듈을 빠르게 정리합니다.' },
@@ -22,7 +22,10 @@ const projectTypes = [
 ];
 
 const ContactPage = () => {
-  const handleContactSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const [formStatus, setFormStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
+  const [formMessage, setFormMessage] = useState('');
+
+  const handleContactSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const formData = new FormData(event.currentTarget);
@@ -32,20 +35,28 @@ const ContactPage = () => {
     const projectType = String(formData.get('projectType') || '').trim();
     const message = String(formData.get('message') || '').trim();
 
-    const subject = `[MRAG 상담 요청] ${companyName || '신규 문의'}`;
-    const body = [
-      'MRAG 제안 상담 요청',
-      '',
-      `회사명 / 성함: ${companyName}`,
-      `연락처: ${phone}`,
-      `이메일: ${email}`,
-      `프로젝트 유형: ${projectType}`,
-      '',
-      '문의 내용',
-      message,
-    ].join('\n');
+    setFormStatus('sending');
+    setFormMessage('');
 
-    window.location.href = `mailto:business@mrac.co.kr?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ companyName, phone, email, projectType, message }),
+      });
+      const result = await response.json().catch(() => ({}));
+
+      if (!response.ok || !result.ok) {
+        throw new Error(result.message || '전송에 실패했습니다.');
+      }
+
+      event.currentTarget.reset();
+      setFormStatus('sent');
+      setFormMessage('상담 요청이 전송되었습니다.');
+    } catch (error) {
+      setFormStatus('error');
+      setFormMessage(error instanceof Error ? error.message : '전송에 실패했습니다.');
+    }
   };
 
   return (
@@ -147,16 +158,16 @@ const ContactPage = () => {
                     <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
                       <div>
                         <label className="mb-2 block font-accent text-xs font-bold uppercase tracking-wider text-muted-foreground">회사명 / 성함</label>
-                        <input name="companyName" type="text" className="w-full border border-border bg-transparent px-4 py-3.5 text-sm text-foreground transition-colors focus:border-mrag-teal focus:outline-none" placeholder="회사명 또는 성함" />
+                      <input name="companyName" type="text" required className="w-full border border-border bg-transparent px-4 py-3.5 text-sm text-foreground transition-colors focus:border-mrag-teal focus:outline-none" placeholder="회사명 또는 성함" />
                       </div>
                       <div>
                         <label className="mb-2 block font-accent text-xs font-bold uppercase tracking-wider text-muted-foreground">연락처</label>
-                        <input name="phone" type="tel" className="w-full border border-border bg-transparent px-4 py-3.5 text-sm text-foreground transition-colors focus:border-mrag-teal focus:outline-none" placeholder="010-0000-0000" />
+                        <input name="phone" type="tel" required className="w-full border border-border bg-transparent px-4 py-3.5 text-sm text-foreground transition-colors focus:border-mrag-teal focus:outline-none" placeholder="010-0000-0000" />
                       </div>
                     </div>
                     <div>
                       <label className="mb-2 block font-accent text-xs font-bold uppercase tracking-wider text-muted-foreground">이메일</label>
-                      <input name="email" type="email" className="w-full border border-border bg-transparent px-4 py-3.5 text-sm text-foreground transition-colors focus:border-mrag-teal focus:outline-none" placeholder="email@company.com" />
+                      <input name="email" type="email" required className="w-full border border-border bg-transparent px-4 py-3.5 text-sm text-foreground transition-colors focus:border-mrag-teal focus:outline-none" placeholder="email@company.com" />
                     </div>
                     <div>
                       <label className="mb-2 block font-accent text-xs font-bold uppercase tracking-wider text-muted-foreground">프로젝트 유형</label>
@@ -168,11 +179,16 @@ const ContactPage = () => {
                     </div>
                     <div>
                       <label className="mb-2 block font-accent text-xs font-bold uppercase tracking-wider text-muted-foreground">문의 내용</label>
-                      <textarea name="message" className="h-28 w-full resize-none border border-border bg-transparent px-4 py-3.5 text-sm text-foreground transition-colors focus:border-mrag-teal focus:outline-none" placeholder="프로젝트 규모, 위치, 예산 등을 자유롭게 작성해주세요." />
+                      <textarea name="message" required className="h-28 w-full resize-none border border-border bg-transparent px-4 py-3.5 text-sm text-foreground transition-colors focus:border-mrag-teal focus:outline-none" placeholder="프로젝트 규모, 위치, 예산 등을 자유롭게 작성해주세요." />
                     </div>
-                    <button type="submit" className="w-full bg-mrag-teal py-4 text-sm font-semibold tracking-tight text-accent-foreground transition-colors hover:bg-mrag-teal-light">
-                      제안 상담 요청
+                    <button type="submit" disabled={formStatus === 'sending'} className="w-full bg-mrag-teal py-4 text-sm font-semibold tracking-tight text-accent-foreground transition-colors hover:bg-mrag-teal-light disabled:cursor-wait disabled:opacity-60">
+                      {formStatus === 'sending' ? '전송 중' : '제안 상담 요청'}
                     </button>
+                    {formMessage && (
+                      <p className={`text-sm ${formStatus === 'sent' ? 'text-mrag-teal' : 'text-destructive'}`} role="status">
+                        {formMessage}
+                      </p>
+                    )}
                   </form>
                 </Reveal>
 
