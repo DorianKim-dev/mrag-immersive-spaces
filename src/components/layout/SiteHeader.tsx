@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
+import { motion, useScroll, useSpring } from 'framer-motion';
 import { SOCIAL_LINKS } from '@/constants/links';
 
 const navItems = [
@@ -24,36 +24,33 @@ export const SiteHeader = () => {
 
   useEffect(() => {
     setMenuOpen(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [location.pathname]);
 
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
+        className={`fixed left-0 right-0 top-0 z-[130] transition-all duration-700 ${
           scrolled
-            ? 'bg-mrag-navy/90 backdrop-blur-xl border-b border-mrag-warm-white/[0.04]'
+            ? 'border-b border-mrag-warm-white/[0.04] bg-mrag-navy/90 backdrop-blur-xl'
             : 'bg-transparent'
         }`}
       >
-        <div className="container-wide flex items-center justify-between h-16 md:h-20">
-          {/* Logo */}
-          <Link to="/" className="relative z-50 group">
-            <span className="font-accent text-xl md:text-2xl font-black tracking-tight text-mrag-warm-white transition-colors group-hover:text-mrag-teal">
+        <div className="container-wide flex h-16 items-center justify-between md:h-20">
+          <Link to="/" className="group relative z-50">
+            <span className="font-accent text-xl font-black text-mrag-warm-white transition-colors group-hover:text-mrag-teal md:text-2xl">
               MRAG
             </span>
-            <span className="hidden md:inline ml-3 font-accent text-[10px] font-medium text-mrag-warm-white/20 tracking-[0.2em] uppercase">
+            <span className="ml-3 hidden font-accent text-[10px] font-medium uppercase tracking-[0.2em] text-mrag-warm-white/20 md:inline">
               Space Platform
             </span>
           </Link>
 
-          {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-10">
+          <nav className="hidden items-center gap-10 md:flex">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 to={item.href}
-                className={`line-reveal text-[13px] font-medium tracking-wide transition-colors pb-1 uppercase ${
+                className={`line-reveal pb-1 text-[13px] font-medium uppercase tracking-wide transition-colors ${
                   location.pathname === item.href
                     ? 'text-mrag-warm-white'
                     : 'text-mrag-warm-white/50 hover:text-mrag-warm-white'
@@ -64,20 +61,20 @@ export const SiteHeader = () => {
             ))}
             <Link
               to="/contact"
-              className="text-[13px] font-semibold px-6 py-2.5 bg-mrag-teal text-accent-foreground hover:bg-mrag-teal-light transition-all duration-300"
+              className="group relative overflow-hidden bg-mrag-teal px-6 py-2.5 text-[13px] font-semibold text-accent-foreground transition-all duration-500 hover:bg-mrag-teal-light"
             >
-              프로젝트 문의
+              <span className="relative z-10">프로젝트 문의</span>
+              <span className="absolute inset-0 translate-y-full bg-mrag-warm-white/20 transition-transform duration-500 group-hover:translate-y-0" />
             </Link>
           </nav>
 
-          {/* Mobile toggle */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden relative z-50 w-8 h-8 flex flex-col justify-center items-center gap-1.5"
+            className="relative z-50 flex h-8 w-8 flex-col items-center justify-center gap-1.5 md:hidden"
             aria-label="메뉴"
           >
-            <span className={`block w-6 h-0.5 bg-mrag-warm-white transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-1' : ''}`} />
-            <span className={`block w-6 h-0.5 bg-mrag-warm-white transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-1' : ''}`} />
+            <span className={`block h-0.5 w-6 bg-mrag-warm-white transition-all duration-300 ${menuOpen ? 'translate-y-1 rotate-45' : ''}`} />
+            <span className={`block h-0.5 w-6 bg-mrag-warm-white transition-all duration-300 ${menuOpen ? '-translate-y-1 -rotate-45' : ''}`} />
           </button>
         </div>
         <motion.div
@@ -86,49 +83,41 @@ export const SiteHeader = () => {
         />
       </header>
 
-      {/* Mobile menu — fullscreen overlay */}
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.4 }}
-            className="fixed inset-0 z-40 bg-mrag-navy flex flex-col justify-center items-center gap-8"
-          >
-            {navItems.map((item, i) => (
-              <motion.div
-                key={item.href}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 + i * 0.08, ease: [0.16, 1, 0.3, 1] }}
-              >
-                <Link to={item.href} className="text-4xl font-bold text-mrag-warm-white hover:text-mrag-teal transition-colors">
+      {menuOpen && (
+          <div className="fixed inset-0 z-[120] flex animate-[menu-panel-in_0.36s_ease_both] flex-col items-center justify-center gap-8 overflow-hidden bg-mrag-navy">
+            <motion.div
+              className="absolute inset-x-0 top-1/2 -translate-y-1/2 whitespace-nowrap font-accent text-[28vw] font-black leading-none text-mrag-warm-white/[0.025]"
+              initial={{ x: '-12%' }}
+              animate={{ x: '-3%' }}
+              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            >
+              MRAG
+            </motion.div>
+            <div className="fixed left-0 right-0 top-36 z-[125] flex flex-col items-center gap-8">
+            {navItems.map((item) => (
+              <div key={item.href}>
+                <Link to={item.href} className="block text-5xl font-black text-white transition-colors hover:text-mrag-teal">
                   {item.label}
                 </Link>
-              </motion.div>
+              </div>
             ))}
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}>
-              <Link
-                to="/contact"
-                className="mt-4 text-lg font-semibold px-8 py-3 bg-mrag-teal text-accent-foreground"
-              >
+            <div>
+              <Link to="/contact" className="mt-4 bg-mrag-teal px-8 py-3 text-lg font-semibold text-accent-foreground">
                 프로젝트 문의
               </Link>
-            </motion.div>
-            {/* Social links */}
+            </div>
+            </div>
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
-              className="mt-8 flex gap-6"
+              transition={{ delay: 0.52 }}
+              className="fixed bottom-12 left-1/2 z-[125] flex -translate-x-1/2 gap-6"
             >
-              <a href={SOCIAL_LINKS.youtube} target="_blank" rel="noopener noreferrer" className="text-sm font-accent text-mrag-warm-white/30 hover:text-mrag-teal transition-colors">YouTube</a>
-              <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer" className="text-sm font-accent text-mrag-warm-white/30 hover:text-mrag-teal transition-colors">Instagram</a>
+              <a href={SOCIAL_LINKS.youtube} target="_blank" rel="noopener noreferrer" className="font-accent text-sm text-mrag-warm-white/30 transition-colors hover:text-mrag-teal">YouTube</a>
+              <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer" className="font-accent text-sm text-mrag-warm-white/30 transition-colors hover:text-mrag-teal">Instagram</a>
             </motion.div>
-          </motion.div>
+          </div>
         )}
-      </AnimatePresence>
     </>
   );
 };

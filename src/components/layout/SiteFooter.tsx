@@ -44,7 +44,7 @@ export const SiteFooter = () => {
             <div className="mt-4 flex flex-col gap-2 text-sm text-mrag-warm-white/30">
               <a href="tel:010-4591-2815" className="hover:text-mrag-teal transition-colors">김준혁 과장 · 010-4591-2815</a>
               <a href="tel:010-9240-3126" className="hover:text-mrag-teal transition-colors">박정우 매니저 · 010-9240-3126</a>
-              <a href="mailto:business@mrag.co.kr" className="hover:text-mrag-teal transition-colors">business@mrag.co.kr</a>
+              <a href="mailto:business@mrac.co.kr" className="hover:text-mrag-teal transition-colors">business@mrac.co.kr</a>
             </div>
           </div>
           <div className="md:col-span-3">

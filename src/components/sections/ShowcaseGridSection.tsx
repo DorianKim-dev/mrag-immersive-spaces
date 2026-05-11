@@ -19,7 +19,7 @@ interface ShowcaseItem {
 }
 
 const showcaseItems: ShowcaseItem[] = [
-  { image: PROJECT_IMAGES.fnb.src, title: '충남대학교 융합교육혁신센터', category: '교육', tag: 'HISCO 전체 구축', span: 'lg' },
+  { image: PROJECT_IMAGES.education.src, title: '충남대학교 융합교육혁신센터', category: '교육', tag: 'HISCO 전체 구축', span: 'lg' },
   { image: PROJECT_IMAGES.exhibition.src, title: '남산도서관', category: '전시', tag: '공공·문화 공간', span: 'md' },
   { image: PROJECT_IMAGES.global.src, title: 'San Fernando 미디어카페', category: '해외', tag: '해외 F&B', span: 'md' },
   { image: MODULE_IMAGES.t.src, title: 'TYPE T — 소규모 모듈', category: 'F&B', tag: '카페 · 팝업', span: 'sm' },
@@ -125,7 +125,7 @@ export const ShowcaseGridSection = () => {
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="award-card-image w-full h-full object-cover transition-all duration-[1.2s] ease-out group-hover:scale-[1.08] group-hover:brightness-110"
+                  className="award-card-image w-full h-full object-cover transition-all [transition-duration:1.2s] ease-out group-hover:scale-[1.08] group-hover:brightness-110"
                   loading="lazy"
                 />
 

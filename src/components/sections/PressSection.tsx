@@ -4,6 +4,8 @@ import { Marquee } from '@/components/animations/Marquee';
 import { NEWS_LINKS, SOCIAL_LINKS } from '@/constants/links';
 
 const articles = [
+  { date: '2026.05', tag: '실감 콘텐츠', title: '포레스텔라 THE LEGACY, MRAG 미디어아트 전시 협업', link: NEWS_LINKS.forestellaLegacy },
+  { date: '2026.04', tag: '상업 전환', title: 'MRAG, 디지털 전환으로 프랜차이즈 모델 재정의', link: NEWS_LINKS.tech42FranchiseModel },
   { date: '2026.04', tag: '사업 확장', title: 'MRAG, IFS 2026에서 TIKITAKA 공개', link: NEWS_LINKS.ifs2026 },
   { date: '2025.11', tag: '교육 공간', title: 'MRAG·KERIS, AI 기반 학습공간 미디어숲 개관', link: NEWS_LINKS.mediaForest },
   { date: '2025.10', tag: 'AI 전환', title: 'AI 콘텐츠 업데이트로 진화하는 미래교육센터 구축', link: NEWS_LINKS.futureEducation },

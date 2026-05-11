@@ -26,16 +26,22 @@ import contentPerformance from '@/assets/projects/content-performance.jpg';
 import contentStore from '@/assets/projects/content-store.jpg';
 import contentKculture from '@/assets/projects/content-kculture.jpg';
 import contentSpa from '@/assets/projects/content-spa.jpg';
+import sourceAnantiGapyeong from '@/assets/projects/source-matched/ananti-gapyeong.jpg';
+import sourceChungnamCareer from '@/assets/projects/source-matched/chungnam-career.jpg';
+import sourceCnuCenter from '@/assets/projects/source-matched/cnu-center.jpg';
+import sourceFutureMuseumDaegu from '@/assets/projects/source-matched/future-museum-daegu.jpg';
+import sourceGlamCafe from '@/assets/projects/source-matched/glam-cafe-pampanga.jpg';
+import sourceNamsanLibrary from '@/assets/projects/source-matched/namsan-library.png';
 
 export const PROJECT_IMAGES = {
-  fnb: { src: contentFnb, alt: '충남대학교 융합교육혁신센터' },
-  exhibition: { src: contentExhibition, alt: '서울특별시교육청 남산도서관' },
-  global: { src: globalOps, alt: '필리핀 San Fernando 미디어카페' },
-  education: { src: contentEducation, alt: '교육 공간' },
+  fnb: { src: contentFnb, alt: 'F&B 몰입형 상업 공간' },
+  exhibition: { src: sourceNamsanLibrary, alt: '서울특별시교육청 남산도서관' },
+  global: { src: sourceGlamCafe, alt: '필리핀 San Fernando 미디어카페' },
+  education: { src: sourceCnuCenter, alt: '교육 공간' },
   performance: { src: contentPerformance, alt: '퍼포먼스 공간' },
-  store: { src: contentStore, alt: '스토어 공간' },
-  kculture: { src: contentKculture, alt: 'K-Culture 공간' },
-  spa: { src: contentSpa, alt: '스파 공간' },
+  store: { src: sourceChungnamCareer, alt: '스토어 공간' },
+  kculture: { src: sourceFutureMuseumDaegu, alt: 'K-Culture 공간' },
+  spa: { src: sourceAnantiGapyeong, alt: '스파 공간' },
 };
 
 // ── 모듈 이미지 ──
@@ -52,15 +58,16 @@ export const MODULE_IMAGES = {
 };
 
 // ── 시나리오 이미지 ──
-import scenarioYoga from '@/assets/projects/immersive-yoga.jpg';
-import scenarioFlamingo from '@/assets/projects/scenario-flamingo.jpg';
-import scenarioCityview from '@/assets/projects/scenario-cityview.jpg';
+import scenarioYoga from '@/assets/projects/scenario-yoga.jpg';
+import scenarioCafe from '@/assets/projects/scenario-cafe.jpg';
+import scenarioDining from '@/assets/projects/scenario-dining.jpg';
+import scenarioLounge from '@/assets/projects/scenario-lounge.jpg';
 
 export const SCENARIO_IMAGES = {
   yoga: { src: scenarioYoga, alt: '요가 & 웰니스' },
-  cafe: { src: scenarioFlamingo, alt: '브런치 카페' },
-  dining: { src: heroCherry, alt: '다이닝 레스토랑' },
-  lounge: { src: scenarioCityview, alt: '미디어 펍' },
+  cafe: { src: scenarioCafe, alt: '브런치 카페' },
+  dining: { src: scenarioDining, alt: '다이닝 레스토랑' },
+  lounge: { src: scenarioLounge, alt: '미디어 펍' },
 };
 
 // ── CTA / 기타 이미지 ──
@@ -83,6 +90,12 @@ import solutionGuestbook from '@/assets/solutions/solution-guestbook.jpg';
 import solutionCloudwall from '@/assets/solutions/solution-cloudwall.jpg';
 import solutionDevice from '@/assets/solutions/solution-device.jpg';
 import solutionTransition from '@/assets/solutions/solution-transition.jpg';
+import pressForestella from '@/assets/press/forestella-legacy.jpg';
+import pressTech42Tikitaka from '@/assets/press/tech42-tikitaka.png';
+import pressZdnetTikitaka from '@/assets/press/zdnet-ifs-tikitaka.png';
+import pressYnaMediaForest from '@/assets/press/yna-media-forest.jpg';
+import pressHankyungFutureEducation from '@/assets/press/hankyung-future-education.jpg';
+import pressBizwatchInterview from '@/assets/press/bizwatch-mrag-interview.jpg';
 
 export const SOLUTION_IMAGES = {
   nfc: { src: solutionNfc, alt: 'NFC 태깅 기반 미디어월 전환' },
@@ -99,10 +112,15 @@ export const SOLUTION_IMAGES = {
 
 // ── Press 페이지용 프리뷰 이미지 (호버 시 표시) ──
 export const PRESS_PREVIEW_IMAGES = [
+  pressForestella,
+  pressTech42Tikitaka,
+  pressZdnetTikitaka,
+  pressYnaMediaForest,
+  pressHankyungFutureEducation,
   globalOps,
   contentPerformance,
+  solutionDevice,
+  solutionTransition,
   contentEducation,
-  contentFnb,
-  contentExhibition,
-  contentStore,
+  pressBizwatchInterview,
 ];

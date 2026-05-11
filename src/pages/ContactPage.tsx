@@ -4,6 +4,7 @@ import { SiteHeader } from '@/components/layout/SiteHeader';
 import { ContactThreeBackdrop } from '@/components/sections/ContactThreeBackdrop';
 import heroImg from '@/assets/projects/hero-dining.jpg';
 import { SOCIAL_LINKS } from '@/constants/links';
+import { FormEvent } from 'react';
 
 const proposalSteps = [
   { title: '공간 진단', desc: '면적, 동선, 기존 장비, 운영 목적을 확인해 적용 가능한 모듈을 빠르게 정리합니다.' },
@@ -21,15 +22,41 @@ const projectTypes = [
 ];
 
 const ContactPage = () => {
+  const handleContactSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const formData = new FormData(event.currentTarget);
+    const companyName = String(formData.get('companyName') || '').trim();
+    const phone = String(formData.get('phone') || '').trim();
+    const email = String(formData.get('email') || '').trim();
+    const projectType = String(formData.get('projectType') || '').trim();
+    const message = String(formData.get('message') || '').trim();
+
+    const subject = `[MRAG 상담 요청] ${companyName || '신규 문의'}`;
+    const body = [
+      'MRAG 제안 상담 요청',
+      '',
+      `회사명 / 성함: ${companyName}`,
+      `연락처: ${phone}`,
+      `이메일: ${email}`,
+      `프로젝트 유형: ${projectType}`,
+      '',
+      '문의 내용',
+      message,
+    ].join('\n');
+
+    window.location.href = `mailto:business@mrac.co.kr?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
+
   return (
     <>
       <SiteHeader />
       <main>
         <section className="section-dark relative min-h-[720px] overflow-hidden pt-32 pb-20">
           <ContactThreeBackdrop />
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,hsl(var(--mrag-navy))_0%,hsl(var(--mrag-navy)/0.92)_42%,hsl(var(--mrag-navy)/0.45)_100%)]" />
-          <div className="relative z-10 flex min-h-[520px] items-center container-wide">
-            <div className="max-w-xl">
+          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,hsl(var(--mrag-navy))_0%,hsl(var(--mrag-navy)/0.92)_42%,hsl(var(--mrag-navy)/0.45)_100%)]" />
+          <div className="pointer-events-none relative z-10 flex min-h-[520px] items-center container-wide">
+            <div className="pointer-events-none max-w-xl">
               <Reveal>
                 <span className="section-label text-mrag-teal">Contact</span>
               </Reveal>
@@ -62,7 +89,7 @@ const ContactPage = () => {
                 <Reveal delay={0.1}>
                   <div className="mt-12 space-y-8">
                     {[
-                      { init: 'JH', name: '김준현 과장', phone: '010-4591-2815' },
+                      { init: 'JH', name: '김준혁 과장', phone: '010-4591-2815' },
                       { init: 'JW', name: '매니지먼트 매니저 박정우', phone: '010-9240-3126' },
                     ].map((person) => (
                       <div key={person.init} className="flex items-start gap-5">
@@ -84,8 +111,8 @@ const ContactPage = () => {
                   <div className="mt-12 space-y-4 border-t border-border pt-8">
                     <div>
                       <span className="font-accent text-xs uppercase tracking-wider text-muted-foreground">Email</span>
-                      <a href="mailto:business@mrag.co.kr" className="block font-accent text-foreground transition-colors hover:text-mrag-teal">
-                        business@mrag.co.kr
+                      <a href="mailto:business@mrac.co.kr" className="block font-accent text-foreground transition-colors hover:text-mrag-teal">
+                        business@mrac.co.kr
                       </a>
                     </div>
                     <div>
@@ -116,32 +143,32 @@ const ContactPage = () => {
 
               <div className="lg:col-span-7">
                 <Reveal delay={0.15}>
-                  <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
+                  <form className="space-y-5" onSubmit={handleContactSubmit}>
                     <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
                       <div>
                         <label className="mb-2 block font-accent text-xs font-bold uppercase tracking-wider text-muted-foreground">회사명 / 성함</label>
-                        <input type="text" className="w-full border border-border bg-transparent px-4 py-3.5 text-sm text-foreground transition-colors focus:border-mrag-teal focus:outline-none" placeholder="회사명 또는 성함" />
+                        <input name="companyName" type="text" className="w-full border border-border bg-transparent px-4 py-3.5 text-sm text-foreground transition-colors focus:border-mrag-teal focus:outline-none" placeholder="회사명 또는 성함" />
                       </div>
                       <div>
                         <label className="mb-2 block font-accent text-xs font-bold uppercase tracking-wider text-muted-foreground">연락처</label>
-                        <input type="tel" className="w-full border border-border bg-transparent px-4 py-3.5 text-sm text-foreground transition-colors focus:border-mrag-teal focus:outline-none" placeholder="010-0000-0000" />
+                        <input name="phone" type="tel" className="w-full border border-border bg-transparent px-4 py-3.5 text-sm text-foreground transition-colors focus:border-mrag-teal focus:outline-none" placeholder="010-0000-0000" />
                       </div>
                     </div>
                     <div>
                       <label className="mb-2 block font-accent text-xs font-bold uppercase tracking-wider text-muted-foreground">이메일</label>
-                      <input type="email" className="w-full border border-border bg-transparent px-4 py-3.5 text-sm text-foreground transition-colors focus:border-mrag-teal focus:outline-none" placeholder="email@company.com" />
+                      <input name="email" type="email" className="w-full border border-border bg-transparent px-4 py-3.5 text-sm text-foreground transition-colors focus:border-mrag-teal focus:outline-none" placeholder="email@company.com" />
                     </div>
                     <div>
                       <label className="mb-2 block font-accent text-xs font-bold uppercase tracking-wider text-muted-foreground">프로젝트 유형</label>
-                      <select className="w-full border border-border bg-mrag-navy px-4 py-3.5 text-sm text-foreground transition-colors focus:border-mrag-teal focus:outline-none">
+                      <select name="projectType" className="w-full border border-border bg-mrag-navy px-4 py-3.5 text-sm text-foreground transition-colors focus:border-mrag-teal focus:outline-none">
                         {projectTypes.map((type) => (
-                          <option key={type}>{type}</option>
+                          <option key={type} value={type}>{type}</option>
                         ))}
                       </select>
                     </div>
                     <div>
                       <label className="mb-2 block font-accent text-xs font-bold uppercase tracking-wider text-muted-foreground">문의 내용</label>
-                      <textarea className="h-28 w-full resize-none border border-border bg-transparent px-4 py-3.5 text-sm text-foreground transition-colors focus:border-mrag-teal focus:outline-none" placeholder="프로젝트 규모, 위치, 예산 등을 자유롭게 작성해주세요." />
+                      <textarea name="message" className="h-28 w-full resize-none border border-border bg-transparent px-4 py-3.5 text-sm text-foreground transition-colors focus:border-mrag-teal focus:outline-none" placeholder="프로젝트 규모, 위치, 예산 등을 자유롭게 작성해주세요." />
                     </div>
                     <button type="submit" className="w-full bg-mrag-teal py-4 text-sm font-semibold tracking-tight text-accent-foreground transition-colors hover:bg-mrag-teal-light">
                       제안 상담 요청

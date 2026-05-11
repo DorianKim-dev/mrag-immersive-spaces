@@ -48,7 +48,7 @@ export const ModulesSection = () => {
               <img
                 src={mod.image}
                 alt={`TYPE ${mod.type}`}
-                className="w-full h-full object-cover transition-all duration-[1.2s] group-hover:scale-[1.06] group-hover:brightness-110"
+                className="w-full h-full object-cover transition-all [transition-duration:1.2s] group-hover:scale-[1.06] group-hover:brightness-110"
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-mrag-navy/90 via-mrag-navy/30 to-transparent transition-all duration-500 group-hover:from-mrag-navy/95" />

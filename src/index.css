@@ -81,6 +81,21 @@
     font-family: var(--font-display);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    cursor: none;
+  }
+
+  @media (pointer: fine) {
+    body,
+    body *,
+    button,
+    a,
+    input,
+    textarea,
+    select,
+    [role="button"],
+    .cursor-pointer {
+      cursor: none !important;
+    }
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -91,7 +106,7 @@
 
   .font-accent {
     font-family: var(--font-accent);
-    letter-spacing: -0.02em;
+    letter-spacing: 0;
   }
 
   /* Custom scrollbar for dark theme */
@@ -136,19 +151,19 @@
   .heading-hero {
     @apply text-5xl md:text-7xl lg:text-[6rem] font-extrabold;
     line-height: 0.95;
-    letter-spacing: -0.04em;
+    letter-spacing: 0;
   }
 
   .heading-section {
     @apply text-3xl md:text-[2.75rem] lg:text-[3.5rem] font-bold;
     line-height: 1.05;
-    letter-spacing: -0.03em;
+    letter-spacing: 0;
   }
 
   .heading-sub {
     @apply text-xl md:text-2xl lg:text-3xl font-semibold;
     line-height: 1.15;
-    letter-spacing: -0.02em;
+    letter-spacing: 0;
   }
 
   .section-label {
@@ -160,14 +175,14 @@
   .stat-number {
     @apply font-black;
     font-family: var(--font-accent);
-    letter-spacing: -0.04em;
+    letter-spacing: 0;
     line-height: 0.9;
   }
 
   .editorial-heading {
     @apply text-4xl md:text-6xl lg:text-7xl font-extrabold;
     line-height: 1.05;
-    letter-spacing: -0.035em;
+    letter-spacing: 0;
   }
 
   .body-large {
@@ -321,6 +336,30 @@
     animation: value-scan 8s linear infinite;
   }
 
+  .atmospheric-grid {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.075) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.075) 1px, transparent 1px);
+    background-size: 88px 88px;
+    mask-image: radial-gradient(circle at 50% 35%, black, transparent 72%);
+  }
+
+  main > section {
+    isolation: isolate;
+    position: relative;
+  }
+
+  main > section:not(:first-child)::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto auto 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(72, 187, 164, 0.24), transparent);
+    opacity: 0.45;
+    pointer-events: none;
+  }
+
 }
 
 /* ─── Marquee animation ─── */
@@ -368,10 +407,35 @@
   72%, 100% { transform: translateX(120%) skewX(-10deg); opacity: 0; }
 }
 
+@keyframes menu-item-in {
+  from {
+    opacity: 0;
+    transform: translateY(34px);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes menu-panel-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+@media (pointer: coarse) {
+  body,
+  body * {
+    cursor: auto;
   }
 }

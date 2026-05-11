@@ -63,10 +63,10 @@ export const ContactCtaSection = () => {
               제안 상담
             </Link>
             <a
-              href="mailto:business@mrag.co.kr"
+              href="mailto:business@mrac.co.kr"
               className="border border-mrag-warm-white/10 px-8 py-3.5 font-accent text-sm text-mrag-warm-white/65 transition-all duration-300 hover:border-mrag-teal/50 hover:text-mrag-teal"
             >
-              business@mrag.co.kr
+              business@mrac.co.kr
             </a>
           </div>
         </Reveal>

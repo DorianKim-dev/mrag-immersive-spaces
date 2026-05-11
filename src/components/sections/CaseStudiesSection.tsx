@@ -10,7 +10,7 @@ const cases = [
     tag: '교육 · HISCO 전체 구축',
     title: '충남대학교\n융합교육혁신센터',
     desc: '대학 교육 환경의 미래를 설계한 MRAG의 대표 프로젝트. 미디어 인프라부터 운영까지 HISCO 전체 구조 적용.',
-    image: PROJECT_IMAGES.fnb.src,
+    image: PROJECT_IMAGES.education.src,
     link: 'https://mrag.co.kr/works/%ec%b6%a9%eb%82%a8%eb%8c%80%ed%95%99%ea%b5%90-%ec%9c%b5%ed%95%a9%ea%b5%90%ec%9c%a1%ed%98%81%ec%8b%a0%ec%84%bc%ed%84%b0/',
     featured: true,
   },
@@ -62,7 +62,7 @@ export const CaseStudiesSection = () => {
             rel="noopener noreferrer"
             className="group award-card relative overflow-hidden aspect-[2.4/1] mb-5 block"
           >
-              <img src={cases[0].image} alt={cases[0].title} className="award-card-image w-full h-full object-cover transition-all duration-[1.5s] group-hover:scale-[1.05] group-hover:brightness-110" />
+              <img src={cases[0].image} alt={cases[0].title} className="award-card-image w-full h-full object-cover transition-all [transition-duration:1.5s] group-hover:scale-[1.05] group-hover:brightness-110" />
             <div className="absolute inset-0 bg-gradient-to-r from-mrag-navy/90 via-mrag-navy/50 to-transparent transition-all duration-700 group-hover:via-mrag-navy/60" />
             <div className="absolute inset-0 border border-transparent transition-all duration-500 group-hover:border-mrag-teal/15" />
             <div className="absolute bottom-0 left-0 p-8 md:p-14 max-w-xl">
@@ -92,7 +92,7 @@ export const CaseStudiesSection = () => {
                   rel="noopener noreferrer"
                   className={`${idx === 0 ? 'md:col-span-3' : 'md:col-span-2'} group award-card relative overflow-hidden aspect-[16/9] ${idx === 1 ? 'md:aspect-auto md:h-full' : ''} block`}
                 >
-                  <img src={c.image} alt={c.title} className="award-card-image w-full h-full object-cover transition-all duration-[1.2s] group-hover:scale-[1.05] group-hover:brightness-110" />
+                  <img src={c.image} alt={c.title} className="award-card-image w-full h-full object-cover transition-all [transition-duration:1.2s] group-hover:scale-[1.05] group-hover:brightness-110" />
                   <div className="absolute inset-0 bg-gradient-to-t from-mrag-navy/80 to-transparent transition-all duration-500 group-hover:from-mrag-navy/90" />
                   <div className="absolute inset-0 border border-transparent transition-all duration-500 group-hover:border-mrag-teal/15" />
                   <div className="absolute bottom-6 left-6">
@@ -103,7 +103,7 @@ export const CaseStudiesSection = () => {
                 </a>
               ) : (
                 <div className={`${idx === 0 ? 'md:col-span-3' : 'md:col-span-2'} group award-card relative overflow-hidden aspect-[16/9] ${idx === 1 ? 'md:aspect-auto md:h-full' : ''}`}>
-                  <img src={c.image} alt={c.title} className="award-card-image w-full h-full object-cover transition-all duration-[1.2s] group-hover:scale-[1.05] group-hover:brightness-110" />
+                  <img src={c.image} alt={c.title} className="award-card-image w-full h-full object-cover transition-all [transition-duration:1.2s] group-hover:scale-[1.05] group-hover:brightness-110" />
                   <div className="absolute inset-0 bg-gradient-to-t from-mrag-navy/80 to-transparent transition-all duration-500 group-hover:from-mrag-navy/90" />
                   <div className="absolute inset-0 border border-transparent transition-all duration-500 group-hover:border-mrag-teal/15" />
                   <div className="absolute bottom-6 left-6">
