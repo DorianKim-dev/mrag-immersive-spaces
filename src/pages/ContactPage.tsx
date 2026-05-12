@@ -21,20 +21,21 @@ const projectTypes = [
   '해외 / 글로벌 운영',
 ];
 
+type ContactFormData = {
+  companyName: string;
+  phone: string;
+  email: string;
+  projectType: string;
+  message: string;
+};
+
 const ContactPage = () => {
   const [formStatus, setFormStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
   const [formMessage, setFormMessage] = useState('');
+  const [pendingContact, setPendingContact] = useState<ContactFormData | null>(null);
+  const [activeForm, setActiveForm] = useState<HTMLFormElement | null>(null);
 
-  const handleContactSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    const formData = new FormData(event.currentTarget);
-    const companyName = String(formData.get('companyName') || '').trim();
-    const phone = String(formData.get('phone') || '').trim();
-    const email = String(formData.get('email') || '').trim();
-    const projectType = String(formData.get('projectType') || '').trim();
-    const message = String(formData.get('message') || '').trim();
-
+  const sendContact = async (contact: ContactFormData, form?: HTMLFormElement | null) => {
     setFormStatus('sending');
     setFormMessage('');
 
@@ -42,7 +43,7 @@ const ContactPage = () => {
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ companyName, phone, email, projectType, message }),
+        body: JSON.stringify(contact),
       });
       const result = await response.json().catch(() => ({}));
 
@@ -50,13 +51,33 @@ const ContactPage = () => {
         throw new Error(result.message || '전송에 실패했습니다.');
       }
 
-      event.currentTarget.reset();
+      form?.reset();
+      setPendingContact(null);
+      setActiveForm(null);
       setFormStatus('sent');
       setFormMessage('상담 요청이 전송되었습니다.');
     } catch (error) {
       setFormStatus('error');
       setFormMessage(error instanceof Error ? error.message : '전송에 실패했습니다.');
     }
+  };
+
+  const handleContactSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const formData = new FormData(event.currentTarget);
+    const contact = {
+      companyName: String(formData.get('companyName') || '').trim(),
+      phone: String(formData.get('phone') || '').trim(),
+      email: String(formData.get('email') || '').trim(),
+      projectType: String(formData.get('projectType') || '').trim(),
+      message: String(formData.get('message') || '').trim(),
+    };
+
+    setActiveForm(event.currentTarget);
+    setPendingContact(contact);
+    setFormStatus('idle');
+    setFormMessage('');
   };
 
   return (
@@ -158,11 +179,11 @@ const ContactPage = () => {
                     <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
                       <div>
                         <label className="mb-2 block font-accent text-xs font-bold uppercase tracking-wider text-muted-foreground">회사명 / 성함</label>
-                      <input name="companyName" type="text" required className="w-full border border-border bg-transparent px-4 py-3.5 text-sm text-foreground transition-colors focus:border-mrag-teal focus:outline-none" placeholder="회사명 또는 성함" />
+                        <input name="companyName" type="text" required className="w-full border border-border bg-transparent px-4 py-3.5 text-sm text-foreground transition-colors focus:border-mrag-teal focus:outline-none" placeholder="회사명 또는 성함" />
                       </div>
                       <div>
                         <label className="mb-2 block font-accent text-xs font-bold uppercase tracking-wider text-muted-foreground">연락처</label>
-                        <input name="phone" type="tel" required className="w-full border border-border bg-transparent px-4 py-3.5 text-sm text-foreground transition-colors focus:border-mrag-teal focus:outline-none" placeholder="010-0000-0000" />
+                        <input name="phone" type="tel" required className="w-full border border-border bg-transparent px-4 py-3.5 text-sm text-foreground transition-colors focus:border-mrag-teal focus:outline-none" placeholder="휴대폰 또는 회사 전화번호" />
                       </div>
                     </div>
                     <div>
@@ -182,7 +203,7 @@ const ContactPage = () => {
                       <textarea name="message" required className="h-28 w-full resize-none border border-border bg-transparent px-4 py-3.5 text-sm text-foreground transition-colors focus:border-mrag-teal focus:outline-none" placeholder="프로젝트 규모, 위치, 예산 등을 자유롭게 작성해주세요." />
                     </div>
                     <button type="submit" disabled={formStatus === 'sending'} className="w-full bg-mrag-teal py-4 text-sm font-semibold tracking-tight text-accent-foreground transition-colors hover:bg-mrag-teal-light disabled:cursor-wait disabled:opacity-60">
-                      {formStatus === 'sending' ? '전송 중' : '제안 상담 요청'}
+                      {formStatus === 'sending' ? '전송 중' : '입력 정보 확인'}
                     </button>
                     {formMessage && (
                       <p className={`text-sm ${formStatus === 'sent' ? 'text-mrag-teal' : 'text-destructive'}`} role="status">
@@ -238,6 +259,48 @@ const ContactPage = () => {
           </div>
         </section>
       </main>
+      {pendingContact && (
+        <div className="fixed inset-0 z-[1300] flex items-center justify-center bg-mrag-navy/80 px-5 backdrop-blur-md" role="dialog" aria-modal="true" aria-labelledby="contact-confirm-title">
+          <div className="w-full max-w-md border border-mrag-warm-white/10 bg-mrag-navy p-6 shadow-2xl">
+            <p className="font-accent text-xs font-bold uppercase tracking-wider text-mrag-teal">Confirm Contact</p>
+            <h2 id="contact-confirm-title" className="mt-3 text-2xl font-bold text-mrag-warm-white">입력하신 연락처가 맞나요?</h2>
+            <p className="mt-3 text-sm leading-relaxed text-mrag-warm-white/55">
+              담당자가 아래 정보로 회신드립니다. 오타가 있으면 답변을 받지 못할 수 있습니다.
+            </p>
+            <dl className="mt-6 space-y-3 border-y border-mrag-warm-white/10 py-5 text-sm">
+              <div className="flex justify-between gap-5">
+                <dt className="text-mrag-warm-white/45">회사명 / 성함</dt>
+                <dd className="text-right font-semibold text-mrag-warm-white">{pendingContact.companyName}</dd>
+              </div>
+              <div className="flex justify-between gap-5">
+                <dt className="text-mrag-warm-white/45">이메일</dt>
+                <dd className="break-all text-right font-semibold text-mrag-warm-white">{pendingContact.email}</dd>
+              </div>
+              <div className="flex justify-between gap-5">
+                <dt className="text-mrag-warm-white/45">연락처</dt>
+                <dd className="text-right font-semibold text-mrag-warm-white">{pendingContact.phone}</dd>
+              </div>
+            </dl>
+            <div className="mt-6 grid grid-cols-2 gap-3">
+              <button
+                type="button"
+                className="border border-mrag-warm-white/15 px-4 py-3 text-sm font-semibold text-mrag-warm-white transition-colors hover:border-mrag-teal/60"
+                onClick={() => setPendingContact(null)}
+              >
+                다시 수정
+              </button>
+              <button
+                type="button"
+                disabled={formStatus === 'sending'}
+                className="bg-mrag-teal px-4 py-3 text-sm font-semibold text-accent-foreground transition-colors hover:bg-mrag-teal-light disabled:cursor-wait disabled:opacity-60"
+                onClick={() => sendContact(pendingContact, activeForm)}
+              >
+                {formStatus === 'sending' ? '전송 중' : '전송하기'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
       <SiteFooter />
     </>
   );
