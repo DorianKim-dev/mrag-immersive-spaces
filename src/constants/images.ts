@@ -64,7 +64,7 @@ import scenarioLounge from '@/assets/projects/scenario-lounge.jpg';
 
 export const SCENARIO_IMAGES = {
   yoga: { src: scenarioYoga, alt: '요가 & 웰니스' },
-  cafe: { src: sourceGlamCafe, alt: '브런치 카페' },
+  cafe: { src: '/브런치 카페 이미지.png', alt: '브런치 카페' },
   dining: { src: scenarioDining, alt: '다이닝 레스토랑' },
   lounge: { src: scenarioLounge, alt: '미디어 펍' },
 };
