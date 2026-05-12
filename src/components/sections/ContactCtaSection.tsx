@@ -39,7 +39,7 @@ export const ContactCtaSection = () => {
         <Reveal delay={0.3}>
           <div className="mt-10 flex flex-wrap gap-8">
             {[
-              { init: 'JH', name: '김준현 과장', phone: '010-4591-2815' },
+              { init: 'JH', name: '김준혁 과장', phone: '010-4591-2815' },
               { init: 'JW', name: '박정우 매니저', phone: '010-9240-3126' },
             ].map((person) => (
               <div key={person.init} className="flex items-center gap-4">
