@@ -59,13 +59,12 @@ export const MODULE_IMAGES = {
 
 // ── 시나리오 이미지 ──
 import scenarioYoga from '@/assets/projects/scenario-yoga.jpg';
-import scenarioCafe from '@/assets/projects/scenario-cafe.jpg';
 import scenarioDining from '@/assets/projects/scenario-dining.jpg';
 import scenarioLounge from '@/assets/projects/scenario-lounge.jpg';
 
 export const SCENARIO_IMAGES = {
   yoga: { src: scenarioYoga, alt: '요가 & 웰니스' },
-  cafe: { src: scenarioCafe, alt: '브런치 카페' },
+  cafe: { src: sourceGlamCafe, alt: '브런치 카페' },
   dining: { src: scenarioDining, alt: '다이닝 레스토랑' },
   lounge: { src: scenarioLounge, alt: '미디어 펍' },
 };
