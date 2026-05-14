@@ -90,6 +90,7 @@ import solutionCloudwall from '@/assets/solutions/solution-cloudwall.jpg';
 import solutionDevice from '@/assets/solutions/solution-device.jpg';
 import solutionTransition from '@/assets/solutions/solution-transition.jpg';
 import pressForestella from '@/assets/press/forestella-legacy.jpg';
+import pressChosunbizForestella from '@/assets/press/chosunbiz-forestella-20260513.jpg';
 import pressTech42Tikitaka from '@/assets/press/tech42-tikitaka.png';
 import pressZdnetTikitaka from '@/assets/press/zdnet-ifs-tikitaka.png';
 import pressYnaMediaForest from '@/assets/press/yna-media-forest.jpg';
@@ -111,6 +112,7 @@ export const SOLUTION_IMAGES = {
 
 // ── Press 페이지용 프리뷰 이미지 (호버 시 표시) ──
 export const PRESS_PREVIEW_IMAGES = [
+  pressChosunbizForestella,
   pressForestella,
   pressTech42Tikitaka,
   pressZdnetTikitaka,

@@ -19,17 +19,18 @@ import { NEWS_LINKS, SOCIAL_LINKS } from '@/constants/links';
  * link: 외부 링크가 있으면 URL, 없으면 undefined
  */
 const articles = [
-  { date: '2026.05', tag: '실감 콘텐츠', title: '포레스텔라 THE LEGACY, MRAG 미디어아트 전시 협업', summary: '포레스텔라 정규 4집 THE LEGACY의 12곡과 명화를 MRAG가 몰입형 미디어아트 전시 콘텐츠로 확장했습니다.', link: NEWS_LINKS.forestellaLegacy, previewIdx: 0 },
-  { date: '2026.04', tag: '상업 전환', title: '“공간은 고정되지 않는다”… MRAG, 프랜차이즈 모델 재정의', summary: 'Tech42는 MRAG가 IFS 2026에서 티키타카를 선보이며 공사 없이 공간 기능을 전환하는 운영 중심 플랫폼을 제시했다고 보도했습니다.', link: NEWS_LINKS.tech42FranchiseModel, previewIdx: 1 },
-  { date: '2026.04', tag: '사업 확장', title: 'MRAG, IFS 2026에서 TIKITAKA 공개', summary: '프랜차이즈 창업·산업 박람회에서 추가 인테리어 공사 없이 운영 시나리오를 바꾸는 상업 공간 플랫폼을 선보였습니다.', link: NEWS_LINKS.ifs2026, previewIdx: 2 },
-  { date: '2025.11', tag: '교육 공간', title: 'MRAG·KERIS, AI 기반 학습공간 ‘미디어숲’ 개관', summary: '20m 초대형 4K 미디어월과 AI 창작 기능을 갖춘 업데이트형 교육 공간 모델에 MRAG 공간운영 솔루션이 적용됐습니다.', link: NEWS_LINKS.mediaForest, previewIdx: 3 },
-  { date: '2025.10', tag: 'AI 전환', title: 'AI 콘텐츠 업데이트로 진화하는 미래교육센터 구축', summary: '교육 주제와 테마별 콘텐츠를 현장에서 운영할 수 있는 AI 기반 가변형 교육 공간 모델을 소개했습니다.', link: NEWS_LINKS.futureEducation, previewIdx: 4 },
-  { date: '2025.03', tag: '글로벌', title: '필리핀 San Fernando 미디어카페 운영', summary: '해외 F&B 공간에 HISCO 기반 운영 구조를 적용해 글로벌 상업 공간 확장의 레퍼런스를 만들었습니다.', link: undefined, previewIdx: 5 },
-  { date: '2025.01', tag: '수상', title: 'iF Design Award / TEA Award 수상', summary: '글로벌 디자인 어워드에서 몰입형 공간 기술력을 인정받으며 국제 무대에서의 경쟁력을 입증했습니다.', link: undefined, previewIdx: 6 },
-  { date: '2024.11', tag: '인증', title: 'GS 1등급 인증 획득, 특허 20건 등록', summary: '품질 인증 및 핵심 기술 특허 확보로 공공·민간 프로젝트의 신뢰 기반을 강화했습니다.', link: undefined, previewIdx: 7 },
-  { date: '2024.09', tag: '론칭', title: 'TIKITAKA 상업공간 전환 플랫폼 공식 론칭', summary: 'B2G 구축 역량을 B2B/B2C 상업 시장으로 확장하는 공간 운영 플랫폼을 공식화했습니다.', link: undefined, previewIdx: 8 },
-  { date: '2024.03', tag: '프로젝트', title: '연세대학교 Y-FLEX / Y-FLOW 구축 완료', summary: '연세대학교 국제캠퍼스 및 신촌캠퍼스에 스마트 교육 공간 구축 완료.', link: 'https://mrag.co.kr/works/%ec%97%b0%ec%84%b8%eb%8c%80%ed%95%99%ea%B5%90-%ea%B5%AD%EC%A0%9C%EC%BA%A0%ED%8D%BC%EC%8A%A4-y-flex/', previewIdx: 9 },
-  { date: '2022.09', tag: '인터뷰', title: '혼합현실 설계그룹 MRAG, 공간을 새로고침하다', summary: '비즈워치는 MRAG를 혼합현실 설계그룹으로 소개하며 가상과 현실의 장점을 결합한 공간 경험과 리그오브레전드 전시 사례를 다뤘습니다.', link: NEWS_LINKS.mixedRealityInterview, previewIdx: 10 },
+  { date: '2026.05', tag: '콘텐츠 협업', title: 'MRAG, 포레스텔라 4집 협업 미디어아트 전시 선보여', summary: '포레스텔라 정규 4집 THE LEGACY와 협업해 음악 IP를 공간 콘텐츠로 확장하고, 문화 IP를 일상 공간에서 경험형 콘텐츠로 전환하는 운영 모델을 제시했습니다.', link: NEWS_LINKS.chosunBizForestella, previewIdx: 0 },
+  { date: '2026.05', tag: '실감 콘텐츠', title: '포레스텔라 THE LEGACY, MRAG 미디어아트 전시 협업', summary: '포레스텔라 정규 4집 THE LEGACY의 12곡과 명화를 MRAG가 몰입형 미디어아트 전시 콘텐츠로 확장했습니다.', link: NEWS_LINKS.forestellaLegacy, previewIdx: 1 },
+  { date: '2026.04', tag: '상업 전환', title: '“공간은 고정되지 않는다”… MRAG, 프랜차이즈 모델 재정의', summary: 'Tech42는 MRAG가 IFS 2026에서 티키타카를 선보이며 공사 없이 공간 기능을 전환하는 운영 중심 플랫폼을 제시했다고 보도했습니다.', link: NEWS_LINKS.tech42FranchiseModel, previewIdx: 2 },
+  { date: '2026.04', tag: '사업 확장', title: 'MRAG, IFS 2026에서 TIKITAKA 공개', summary: '프랜차이즈 창업·산업 박람회에서 추가 인테리어 공사 없이 운영 시나리오를 바꾸는 상업 공간 플랫폼을 선보였습니다.', link: NEWS_LINKS.ifs2026, previewIdx: 3 },
+  { date: '2025.11', tag: '교육 공간', title: 'MRAG·KERIS, AI 기반 학습공간 ‘미디어숲’ 개관', summary: '20m 초대형 4K 미디어월과 AI 창작 기능을 갖춘 업데이트형 교육 공간 모델에 MRAG 공간운영 솔루션이 적용됐습니다.', link: NEWS_LINKS.mediaForest, previewIdx: 4 },
+  { date: '2025.10', tag: 'AI 전환', title: 'AI 콘텐츠 업데이트로 진화하는 미래교육센터 구축', summary: '교육 주제와 테마별 콘텐츠를 현장에서 운영할 수 있는 AI 기반 가변형 교육 공간 모델을 소개했습니다.', link: NEWS_LINKS.futureEducation, previewIdx: 5 },
+  { date: '2025.03', tag: '글로벌', title: '필리핀 San Fernando 미디어카페 운영', summary: '해외 F&B 공간에 HISCO 기반 운영 구조를 적용해 글로벌 상업 공간 확장의 레퍼런스를 만들었습니다.', link: undefined, previewIdx: 6 },
+  { date: '2025.01', tag: '수상', title: 'iF Design Award / TEA Award 수상', summary: '글로벌 디자인 어워드에서 몰입형 공간 기술력을 인정받으며 국제 무대에서의 경쟁력을 입증했습니다.', link: undefined, previewIdx: 7 },
+  { date: '2024.11', tag: '인증', title: 'GS 1등급 인증 획득, 특허 20건 등록', summary: '품질 인증 및 핵심 기술 특허 확보로 공공·민간 프로젝트의 신뢰 기반을 강화했습니다.', link: undefined, previewIdx: 8 },
+  { date: '2024.09', tag: '론칭', title: 'TIKITAKA 상업공간 전환 플랫폼 공식 론칭', summary: 'B2G 구축 역량을 B2B/B2C 상업 시장으로 확장하는 공간 운영 플랫폼을 공식화했습니다.', link: undefined, previewIdx: 9 },
+  { date: '2024.03', tag: '프로젝트', title: '연세대학교 Y-FLEX / Y-FLOW 구축 완료', summary: '연세대학교 국제캠퍼스 및 신촌캠퍼스에 스마트 교육 공간 구축 완료.', link: 'https://mrac.co.kr/works/%ec%97%b0%ec%84%b8%eb%8c%80%ed%95%99%ea%B5%90-%ea%B5%AD%EC%A0%9C%EC%BA%A0%ED%8D%BC%EC%8A%A4-y-flex/', previewIdx: 10 },
+  { date: '2022.09', tag: '인터뷰', title: '혼합현실 설계그룹 MRAG, 공간을 새로고침하다', summary: '비즈워치는 MRAG를 혼합현실 설계그룹으로 소개하며 가상과 현실의 장점을 결합한 공간 경험과 리그오브레전드 전시 사례를 다뤘습니다.', link: NEWS_LINKS.mixedRealityInterview, previewIdx: 11 },
 ];
 
 const pressMetrics = [

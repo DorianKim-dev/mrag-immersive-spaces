@@ -11,7 +11,7 @@ const cases = [
     title: '충남대학교\n융합교육혁신센터',
     desc: '대학 교육 환경의 미래를 설계한 MRAG의 대표 프로젝트. 미디어 인프라부터 운영까지 HISCO 전체 구조 적용.',
     image: PROJECT_IMAGES.education.src,
-    link: 'https://mrag.co.kr/works/%ec%b6%a9%eb%82%a8%eb%8c%80%ed%95%99%ea%b5%90-%ec%9c%b5%ed%95%a9%ea%b5%90%ec%9c%a1%ed%98%81%ec%8b%a0%ec%84%bc%ed%84%b0/',
+    link: 'https://mrac.co.kr/works/%ec%b6%a9%eb%82%a8%eb%8c%80%ed%95%99%ea%b5%90-%ec%9c%b5%ed%95%a9%ea%b5%90%ec%9c%a1%ed%98%81%ec%8b%a0%ec%84%bc%ed%84%b0/',
     featured: true,
   },
   {
@@ -20,7 +20,7 @@ const cases = [
     title: '서울특별시교육청\n남산도서관',
     desc: '',
     image: PROJECT_IMAGES.exhibition.src,
-    link: 'https://mrag.co.kr/works/%ec%84%9c%ec%9a%b8%ed%8a%b9%eb%b3%84%ec%8b%9c%ea%b5%90%ec%9c%a1%ec%b2%ad-%eb%82%a8%ec%82%b0%eb%8f%84%ec%84%9c%ea%b4%80/',
+    link: 'https://mrac.co.kr/works/%ec%84%9c%ec%9a%b8%ed%8a%b9%eb%b3%84%ec%8b%9c%ea%b5%90%ec%9c%a1%ec%b2%ad-%eb%82%a8%ec%82%b0%eb%8f%84%ec%84%9c%ea%b4%80/',
     featured: false,
   },
   {

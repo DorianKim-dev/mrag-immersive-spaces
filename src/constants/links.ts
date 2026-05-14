@@ -1,7 +1,7 @@
 export const SOCIAL_LINKS = {
   youtube: 'https://www.youtube.com/@mragofficial6481',
   instagram: 'https://www.instagram.com/mrag.official',
-  website: 'https://mrag.co.kr',
+  website: 'https://mrac.co.kr',
 };
 
 export const FEATURED_VIDEO = {
@@ -12,6 +12,7 @@ export const FEATURED_VIDEO = {
 };
 
 export const NEWS_LINKS = {
+  chosunBizForestella: 'https://biz.chosun.com/industry/business_info/2026/05/13/EJKA2FAZYZAQNCOXDRN2P4GIQQ/',
   forestellaLegacy: 'https://enews.imbc.com/News/RetrieveNewsInfo/503806',
   tech42FranchiseModel: 'https://www.tech42.co.kr/%EA%B3%B5%EA%B0%84%EC%9D%80-%EA%B3%A0%EC%A0%95%EB%90%98%EC%A7%80-%EC%95%8A%EB%8A%94%EB%8B%A4-mrag-%EB%94%94%EC%A7%80%ED%84%B8-%EC%A0%84%ED%99%98%EC%9C%BC%EB%A1%9C-%ED%94%84/',
   ifs2026: 'https://zdnet.co.kr/view/?no=20260402150033',
