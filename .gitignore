@@ -11,6 +11,8 @@ node_modules
 dist
 dist-ssr
 tmp
+asset-archive
+asset-archive/**
 *.local
 
 # Local reference materials only

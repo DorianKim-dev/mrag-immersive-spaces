@@ -118,27 +118,6 @@ const ContactPage = () => {
                   </p>
                 </Reveal>
 
-                <Reveal delay={0.1}>
-                  <div className="mt-12 space-y-8">
-                    {[
-                      { init: 'JH', name: '김준혁 과장', phone: '010-4591-2815' },
-                      { init: 'JW', name: '매니지먼트 매니저 박정우', phone: '010-9240-3126' },
-                    ].map((person) => (
-                      <div key={person.init} className="flex items-start gap-5">
-                        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-mrag-navy">
-                          <span className="font-accent text-sm font-bold text-mrag-teal">{person.init}</span>
-                        </div>
-                        <div>
-                          <p className="text-lg font-bold text-foreground">{person.name}</p>
-                          <a href={`tel:${person.phone}`} className="mt-1 block font-accent text-base text-mrag-teal transition-colors hover:text-mrag-teal-light">
-                            {person.phone}
-                          </a>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </Reveal>
-
                 <Reveal delay={0.2}>
                   <div className="mt-12 space-y-4 border-t border-border pt-8">
                     <div>
@@ -148,18 +127,18 @@ const ContactPage = () => {
                       </a>
                     </div>
                     <div>
+                      <span className="font-accent text-xs uppercase tracking-wider text-muted-foreground">Tel</span>
+                      <a href="tel:02-308-0007" className="block font-accent text-foreground transition-colors hover:text-mrag-teal">
+                        02-308-0007
+                      </a>
+                    </div>
+                    <div>
                       <span className="font-accent text-xs uppercase tracking-wider text-muted-foreground">Office</span>
                       <p className="text-sm leading-relaxed text-foreground">
                         서울특별시 서초구 방배로 32길 4
                         <br />
                         정다운 빌딩 5F / B1
                       </p>
-                    </div>
-                    <div>
-                      <span className="font-accent text-xs uppercase tracking-wider text-muted-foreground">Tel</span>
-                      <a href="tel:02-308-0007" className="block font-accent text-foreground transition-colors hover:text-mrag-teal">
-                        02-308-0007
-                      </a>
                     </div>
                     <div className="flex gap-5 pt-4">
                       <a href={SOCIAL_LINKS.youtube} target="_blank" rel="noopener noreferrer" className="font-accent text-sm text-muted-foreground transition-colors hover:text-mrag-teal">

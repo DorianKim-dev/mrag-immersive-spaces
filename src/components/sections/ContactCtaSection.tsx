@@ -36,27 +36,6 @@ export const ContactCtaSection = () => {
           </p>
         </Reveal>
 
-        <Reveal delay={0.3}>
-          <div className="mt-10 flex flex-wrap gap-8">
-            {[
-              { init: 'JH', name: '김준혁 과장', phone: '010-4591-2815' },
-              { init: 'JW', name: '박정우 매니저', phone: '010-9240-3126' },
-            ].map((person) => (
-              <div key={person.init} className="flex items-center gap-4">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full border border-mrag-warm-white/[0.08] bg-mrag-warm-white/5 backdrop-blur-md">
-                  <span className="font-accent text-xs font-bold text-mrag-teal">{person.init}</span>
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-mrag-warm-white">{person.name}</p>
-                  <a href={`tel:${person.phone}`} className="font-accent text-sm text-mrag-warm-white/45 transition-colors hover:text-mrag-teal">
-                    {person.phone}
-                  </a>
-                </div>
-              </div>
-            ))}
-          </div>
-        </Reveal>
-
         <Reveal delay={0.4}>
           <div className="mt-10 flex flex-wrap gap-3">
             <Link to="/contact" className="bg-mrag-teal px-8 py-3.5 text-sm font-semibold text-accent-foreground transition-all duration-300 hover:bg-mrag-teal-light">
@@ -67,6 +46,12 @@ export const ContactCtaSection = () => {
               className="border border-mrag-warm-white/10 px-8 py-3.5 font-accent text-sm text-mrag-warm-white/65 transition-all duration-300 hover:border-mrag-teal/50 hover:text-mrag-teal"
             >
               business@mrac.co.kr
+            </a>
+            <a
+              href="tel:02-308-0007"
+              className="border border-mrag-warm-white/10 px-8 py-3.5 font-accent text-sm text-mrag-warm-white/65 transition-all duration-300 hover:border-mrag-teal/50 hover:text-mrag-teal"
+            >
+              02-308-0007
             </a>
           </div>
         </Reveal>
