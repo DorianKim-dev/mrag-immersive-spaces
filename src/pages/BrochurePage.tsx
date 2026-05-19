@@ -1,6 +1,7 @@
 import { Reveal, StaggerContainer, StaggerItem } from '@/components/animations/Reveal';
 import { SiteFooter } from '@/components/layout/SiteFooter';
 import { SiteHeader } from '@/components/layout/SiteHeader';
+import { NEWS_LINKS } from '@/constants/links';
 import { ArrowUpRight, Play } from 'lucide-react';
 
 type BrochureKind = 'commercial' | 'public';
@@ -68,6 +69,8 @@ const forestellaStats = [
   'NFC 체험',
   '행사 현장',
 ];
+
+const forestellaArticleImage = '/포레스텔라/1 포레스텔라 기사 사진.png';
 
 const forestellaFeatures = [
   {
@@ -282,7 +285,7 @@ const CommercialPage = () => (
       <section className="order-[1] border-y border-mrag-teal/10 bg-mrag-navy-light/30 py-20 md:py-28">
         <div className="container-wide">
           <Reveal>
-            <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+            <div className="grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-center">
               <div className="max-w-3xl">
                 <span className="section-label text-mrag-teal">FORESTELLA X MRAG</span>
                 <h2 className="mt-4 heading-sub text-mrag-warm-white">Music IP Immersive Exhibition</h2>
@@ -290,14 +293,33 @@ const CommercialPage = () => (
                   MRAG는 FORESTELLA의 음악 IP를 실감미디어 기반의 공간 경험으로 확장했습니다.
                   미디어월, 스마트 갤러리, 도슨트 영상, NFC 체험을 통해 앨범의 세계관을 전시형 공간 콘텐츠로 구현했습니다.
                 </p>
+                <div className="mt-8 grid grid-cols-2 gap-2 sm:grid-cols-5 lg:grid-cols-2 xl:grid-cols-5">
+                  {forestellaStats.map((item) => (
+                    <div key={item} className="flex min-h-[88px] items-center justify-center border border-mrag-teal/20 bg-mrag-teal/[0.07] px-3 text-center">
+                      <span className="text-sm font-black leading-snug text-mrag-warm-white [word-break:keep-all] md:text-base">{item}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <div className="grid grid-cols-2 gap-2 sm:grid-cols-5 lg:grid-cols-5">
-                {forestellaStats.map((item) => (
-                  <div key={item} className="flex min-h-[88px] items-center justify-center border border-mrag-teal/20 bg-mrag-teal/[0.07] px-3 text-center">
-                    <span className="text-sm font-black leading-snug text-mrag-warm-white [word-break:keep-all] md:text-base">{item}</span>
+              <a
+                href={NEWS_LINKS.chosunBizForestella}
+                target="_blank"
+                rel="noreferrer"
+                className="group relative min-h-[520px] overflow-hidden border border-mrag-teal/15 bg-mrag-navy"
+                aria-label="FORESTELLA X MRAG 조선비즈 기사 보기"
+              >
+                <img src={forestellaArticleImage} alt="FORESTELLA X MRAG 기사 이미지" className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105" loading="lazy" />
+                <div className="absolute inset-0 bg-gradient-to-t from-mrag-navy via-mrag-navy/20 to-transparent transition duration-500 group-hover:via-mrag-navy/35" />
+                <div className="absolute inset-x-0 bottom-0 p-6">
+                  <p className="font-accent text-xs font-semibold uppercase tracking-wider text-mrag-teal">Commercial Case</p>
+                  <div className="mt-2 flex items-end justify-between gap-4">
+                    <h3 className="text-3xl font-black tracking-tight text-mrag-warm-white">FORESTELLA X MRAG</h3>
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center border border-mrag-teal/35 text-mrag-teal transition group-hover:bg-mrag-teal group-hover:text-mrag-navy">
+                      <ArrowUpRight size={18} />
+                    </span>
                   </div>
-                ))}
-              </div>
+                </div>
+              </a>
             </div>
           </Reveal>
           <StaggerContainer className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-5">
