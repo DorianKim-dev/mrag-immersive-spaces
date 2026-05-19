@@ -61,13 +61,40 @@ const seasonScenarios = [
   { title: '연말 / 새해 시즌', label: 'NEW YEAR EVENT', image: c('season-newyear.jpg') },
 ];
 
-const forestellaImages = [
-  '/포레스텔라/1 포레스텔라 기사 사진.png',
-  '/포레스텔라/KakaoTalk_20260507_214634875.png',
-  '/포레스텔라/KakaoTalk_20260507_214634875_01.png',
-  '/포레스텔라/KakaoTalk_20260507_214634875_02.png',
-  '/포레스텔라/KakaoTalk_20260507_214634875_03.png',
-  '/포레스텔라/KakaoTalk_20260507_214634875_04.png',
+const forestellaStats = [
+  '미디어월',
+  '스마트 갤러리',
+  '도슨트 영상',
+  'NFC 체험',
+  '행사 현장',
+];
+
+const forestellaFeatures = [
+  {
+    title: 'NFC DX 공간 전환',
+    text: 'NFC 기반 참여형 체험 연결',
+    image: '/포레스텔라 이미지/NFC DX 공간 전환.png',
+  },
+  {
+    title: '스마트 갤러리',
+    text: '앨범 세계관을 갤러리형 이미지로 구현',
+    image: '/포레스텔라 이미지/스마트 갤러리.JPG',
+  },
+  {
+    title: '실감 미디어 클라우드월',
+    text: '대형 미디어월 기반 몰입형 공간 연출',
+    image: '/포레스텔라 이미지/실감 미디어 클라우드월.JPG',
+  },
+  {
+    title: '미디어월 연동 포토부스',
+    text: '관람 경험을 기록과 공유로 확장',
+    image: '/포레스텔라 이미지/미디어월 연동 포토부스.JPG',
+  },
+  {
+    title: '행사 현장',
+    text: '팬덤과 공간 경험이 만나는 현장 운영',
+    image: '/포레스텔라 이미지/행사 현장.JPG',
+  },
 ];
 
 const operationCards = [
@@ -167,6 +194,21 @@ const ImageCard = ({ title, eyebrow, image, className = '' }: { title: string; e
   </article>
 );
 
+const ForestellaCard = ({ title, text, image }: { title: string; text: string; image: string }) => (
+  <article className="group relative min-h-[340px] overflow-hidden border border-mrag-teal/15 bg-mrag-navy">
+    <img src={image} alt={title} className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105" loading="lazy" />
+    <div className="absolute inset-0 bg-gradient-to-t from-mrag-navy via-mrag-navy/35 to-transparent transition duration-500 group-hover:from-mrag-navy group-hover:via-mrag-navy/72" />
+    <div className="absolute inset-x-0 bottom-0 p-5 transition duration-500 group-hover:translate-y-6 group-hover:opacity-0">
+      <p className="font-accent text-[11px] font-semibold uppercase tracking-wider text-mrag-teal">FORESTELLA X MRAG</p>
+      <h3 className="mt-2 text-2xl font-black tracking-tight text-mrag-warm-white [word-break:keep-all]">{title}</h3>
+    </div>
+    <div className="absolute inset-x-0 bottom-0 translate-y-6 p-5 opacity-0 transition duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+      <p className="font-accent text-[11px] font-semibold uppercase tracking-wider text-mrag-teal">{title}</p>
+      <h3 className="mt-2 text-xl font-black leading-snug tracking-tight text-mrag-warm-white [word-break:keep-all]">{text}</h3>
+    </div>
+  </article>
+);
+
 const SimpleImageGrid = ({ items }: { items: Array<{ title: string; count?: string; label?: string; image: string }> }) => (
   <StaggerContainer className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
     {items.map((item) => (
@@ -240,37 +282,28 @@ const CommercialPage = () => (
       <section className="order-[1] border-y border-mrag-teal/10 bg-mrag-navy-light/30 py-20 md:py-28">
         <div className="container-wide">
           <Reveal>
-            <div className="grid gap-10 lg:grid-cols-[0.86fr_1.14fr] lg:items-center">
-              <div>
+            <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+              <div className="max-w-3xl">
                 <span className="section-label text-mrag-teal">FORESTELLA X MRAG</span>
                 <h2 className="mt-4 heading-sub text-mrag-warm-white">Music IP Immersive Exhibition</h2>
                 <p className="mt-5 text-lg leading-[1.8] text-mrag-warm-white/62">
                   MRAG는 FORESTELLA의 음악 IP를 실감미디어 기반의 공간 경험으로 확장했습니다.
-                  미디어월, 갤러리형 이미지, 도슨트 영상, NFC 체험을 통해 앨범의 세계관을 전시형 공간 콘텐츠로 구현했습니다.
+                  미디어월, 스마트 갤러리, 도슨트 영상, NFC 체험을 통해 앨범의 세계관을 전시형 공간 콘텐츠로 구현했습니다.
                 </p>
-                <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-3">
-                  <Stat value="Music IP" label="브랜드/IP 협업" />
-                  <Stat value="THE LEGACY" label="앨범 세계관 전시화" />
-                  <Stat value="NFC" label="참여형 체험 연결" />
-                </div>
               </div>
-              <ImageCard
-                title="FORESTELLA X MRAG"
-                eyebrow="Commercial Case"
-                image={forestellaImages[0]}
-                className="min-h-[520px]"
-              />
+              <div className="grid grid-cols-2 gap-2 sm:grid-cols-5 lg:grid-cols-5">
+                {forestellaStats.map((item) => (
+                  <div key={item} className="flex min-h-[88px] items-center justify-center border border-mrag-teal/20 bg-mrag-teal/[0.07] px-3 text-center">
+                    <span className="text-sm font-black leading-snug text-mrag-warm-white [word-break:keep-all] md:text-base">{item}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </Reveal>
-          <StaggerContainer className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-5">
-            {forestellaImages.slice(1).map((image, index) => (
-              <StaggerItem key={image}>
-                <ImageCard
-                  title={`THE LEGACY ${String(index + 1).padStart(2, '0')}`}
-                  eyebrow="Immersive Scene"
-                  image={image}
-                  className="min-h-[280px]"
-                />
+          <StaggerContainer className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-5">
+            {forestellaFeatures.map((item) => (
+              <StaggerItem key={item.title}>
+                <ForestellaCard title={item.title} text={item.text} image={item.image} />
               </StaggerItem>
             ))}
           </StaggerContainer>
