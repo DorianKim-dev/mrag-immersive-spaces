@@ -297,9 +297,6 @@ const PublicPage = () => (
             <div className="max-w-5xl">
               <span className="section-label text-mrag-teal">Public AI Education Platform</span>
               <h1 className="mt-5 text-[clamp(3.2rem,7vw,7.4rem)] font-black leading-[0.95] tracking-tight text-mrag-warm-white [word-break:keep-all]">
-                <span className="relative mr-1 inline-block text-mrag-teal drop-shadow-[0_0_22px_rgba(44,212,191,0.22)] after:absolute after:-bottom-1 after:left-0 after:h-[0.08em] after:w-full after:bg-mrag-teal/70">
-                  공공
-                </span>
                 AI로 만드는 공공센터의 미래
               </h1>
               <p className="mt-7 max-w-2xl text-lg leading-[1.8] text-mrag-warm-white/72">AI와 실감미디어로 교육, 문화, 참여의 방식을 확장합니다. 공간 설계부터 콘텐츠, 프로그램, 운영 체계까지 하나의 시스템으로 연결합니다.</p>
