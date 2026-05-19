@@ -1,7 +1,7 @@
 export const SOCIAL_LINKS = {
   youtube: 'https://www.youtube.com/@mragofficial6481',
   instagram: 'https://www.instagram.com/mrag.official',
-  website: 'https://mrac.co.kr',
+  website: 'https://mrag.co.kr',
 };
 
 export const FEATURED_VIDEO = {

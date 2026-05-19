@@ -116,7 +116,7 @@ export const PressSection = () => {
                 rel="noopener noreferrer"
                 className="font-accent text-sm font-medium text-mrag-warm-white/40 transition-colors hover:text-mrag-teal"
               >
-                mrac.co.kr
+                mrag.co.kr
               </a>
             </div>
           </Reveal>
